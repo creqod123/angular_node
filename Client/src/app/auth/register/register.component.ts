@@ -16,17 +16,18 @@ export class RegisterComponent {
   })
 
   register() {
+    console.warn("check", this.registervalid.value)
   }
 
-  get user(){
+  get user() {
     return this.registervalid.get('user')
   }
 
-  get email(){
+  get email() {
     return this.registervalid.get('email')
   }
 
-  get password(){
+  get password() {
     return this.registervalid.get('password')
   }
 

@@ -1,6 +1,6 @@
 <!--Main Navigation-->
 <header class="intro-header">
-  
+
   <!--Navbar-->
   <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
     <mdb-navbar-brand>
@@ -11,8 +11,6 @@
         <li class="nav-item active waves-light" mdbWavesEffect>
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item waves-light" mdbWavesEffect><a class="nav-link" href="#">Link</a></li>
-        <li class="nav-item waves-light" mdbWavesEffect><a class="nav-link" href="#">Profile</a></li>
       </ul>
     </links>
   </mdb-navbar>
@@ -24,7 +22,7 @@
           <div class="row flex-center pt-5 mt-3 w-100">
             <div class="col-md-6 text-center text-md-left mb-5">
               <div class="white-text">
-                <h2 class="h1 h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h2>
+                <h2 class="h1 h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Register right now! </h2>
                 <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
                 <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing
                   elit. Rem repellendus
@@ -56,13 +54,25 @@
                     <input type="password" id="form4" class="text-white form-control" mdbInput>
                     <label for="form4" class="text-white">Your password</label>
                   </div>
+                  <div class="md-form display">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" class="custom-control-input" style="opacity: 1;" id="defaultInline1"
+                        name="inlineDefaultRadiosExample" value="user" mdbInput> <p style="color: white;">User</p>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" class="custom-control-input" style="opacity: 1;" id="defaultInline2"
+                        name="inlineDefaultRadiosExample" value="seller" mdbInput><p style="color: white;">Seller</p>
+                    </div>
+                  </div>
                   <div class="text-center mt-4">
                     <button mdbBtn color="indigo" mdbWavesEffect>Sign up</button>
                     <hr class="hr-light mb-3 mt-4">
                     <div class="inline-ul text-center d-flex justify-content-center">
-                      <a class="p-2 m-2 tw-ic"><mdb-icon fab icon="twitter" class="text-white"></mdb-icon></a>
+                      <p>Already have an account ? <a style="color: white;text-decoration: underline"
+                          href="/login">Login Here</a></p>
+                      <!-- <a class="p-2 m-2 tw-ic"><mdb-icon fab icon="twitter" class="text-white"></mdb-icon></a>
                       <a class="p-2 m-2 li-ic"><mdb-icon fab icon="linkedin-in" class="text-white"></mdb-icon></a>
-                      <a class="p-2 m-2 ins-ic"><mdb-icon fab icon="instagram" class="text-white"></mdb-icon></a>
+                      <a class="p-2 m-2 ins-ic"><mdb-icon fab icon="instagram" class="text-white"></mdb-icon></a> -->
                     </div>
                   </div>
                 </mdb-card-body>

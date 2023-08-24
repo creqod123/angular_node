@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ButtonsModule, WavesModule, IconsModule } from 'angular-bootstrap-md'
 
 @Component({
   selector: 'app-register',

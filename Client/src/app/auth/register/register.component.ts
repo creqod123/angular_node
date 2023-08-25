@@ -8,27 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class RegisterComponent {
 
-  registervalid = new FormGroup({
-    user: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    type: new FormControl('', [Validators.required])
-  })
-
-  register(value:any) {
-    console.warn("check", this.registervalid.value)
+  register(value: any) {
+    console.warn("check :- ",value)
   }
-
-  get user() {
-    return this.registervalid.get('user')
-  }
-
-  get email() {
-    return this.registervalid.get('email')
-  }
-
-  get password() {
-    return this.registervalid.get('password')
-  }
-
 }

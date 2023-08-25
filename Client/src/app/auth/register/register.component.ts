@@ -15,7 +15,7 @@ export class RegisterComponent {
     type: new FormControl('', [Validators.required])
   })
 
-  register() {
+  register(value:any) {
     console.warn("check", this.registervalid.value)
   }
 

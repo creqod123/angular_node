@@ -14,7 +14,7 @@
     </links>
   </mdb-navbar>
   <!--Intro Section-->
-  <form [formGroup]="registervalid" (ngSubmit)="register()">
+  <form [formGroup]="registervalid" (ngSubmit)="register(registerform.value)" #registerform="ngForm">
     <section class="view intro-2">
       <div class="full-bg-img mask rgba-gradient">
         <div class="container flex-center">
@@ -43,45 +43,46 @@
                     </div>
                     <!--Body-->
                     <div class="md-form">
-                      <input type="text" id="form3" class="text-white form-control" mdbInput formControlName="user">
+                      <input type="text" id="form3" class="text-white form-control" mdbInput ngModel name="user"
+                        formControlName="user">
                       <label for="form3" class="text-white">Your name</label>
-                      <span style="color: red;" *ngIf="user && user.invalid && user.touched">Enter Valid userName</span>
                     </div>
+
                     <div class="md-form">
-                      <input type="email" id="form2" class="text-white form-control" mdbInput formControlName="email">
+                      <input type="email" id="form2" class="text-white form-control" mdbInput ngModel name="email"
+                        formControlName="email">
                       <label for="form2" class="text-white">Your email</label>
-                      <span style="color: red;" *ngIf="email && email.invalid && email.touched">Enter Valid Email</span>
                     </div>
+
                     <div class="md-form">
-                      <input type="password" id="form4" class="text-white form-control" mdbInput
+                      <input type="password" id="form4" class="text-white form-control" mdbInput ngModel name="password"
                         formControlName="password">
                       <label for="form4" class="text-white">Your password</label>
-                      <span style="color: red;" *ngIf="password && password.invalid && password.touched">Enter Valid
-                        Password</span>
                     </div>
+
                     <div class="md-form display">
                       <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" class="custom-control-input" style="opacity: 1;" id="defaultInline1"
-                          name="checktype" value="user" mdbInput checked>
+                          name="checktype" mdbInput checked>
                         <p style="color: white;">User</p>
                       </div>
+
                       <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" class="custom-control-input" style="opacity: 1;" id="defaultInline2"
                           name="checktype" value="seller" mdbInput>
                         <p style="color: white;">Seller</p>
                       </div>
                     </div>
+
                     <div class="text-center mt-4">
                       <button mdbBtn color="indigo" mdbWavesEffect>Sign up</button>
                       <hr class="hr-light mb-3 mt-4">
                       <div class="inline-ul text-center d-flex justify-content-center">
                         <p>Already have an account ? <a style="color: white;text-decoration: underline"
                             href="/login">Login Here</a></p>
-                        <!-- <a class="p-2 m-2 tw-ic"><mdb-icon fab icon="twitter" class="text-white"></mdb-icon></a>
-                      <a class="p-2 m-2 li-ic"><mdb-icon fab icon="linkedin-in" class="text-white"></mdb-icon></a>
-                      <a class="p-2 m-2 ins-ic"><mdb-icon fab icon="instagram" class="text-white"></mdb-icon></a> -->
                       </div>
                     </div>
+                    
                   </mdb-card-body>
                 </mdb-card>
                 <!--/.Form-->

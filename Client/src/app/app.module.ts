@@ -12,6 +12,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import {ReactiveFormsModule} from '@angular/forms'
 import {FormsModule} from '@angular/forms'
+import {HttpClientModule} from '@angular/common/http';
+import { CartComponent } from './user/cart/cart.component';
+import { OrderComponent } from './user/order/order.component'
 
 @NgModule({
   declarations: [
@@ -20,13 +23,16 @@ import {FormsModule} from '@angular/forms'
     RegisterComponent,
     HomeComponent,
     NavbarComponent,
+    CartComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

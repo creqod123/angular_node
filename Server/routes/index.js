@@ -37,7 +37,7 @@ router.post('/admin/stock', verifyToken, adminController.stock);
 
 //            ============ User ============== 
 
-router.post('/user', userController.getAll)
+router.get('/user', userController.getAll)
 router.post('/user/cart', userController.userCart)
 router.post('/user/checkout', userController.checkout)
 router.post('/user/order', userController.order);

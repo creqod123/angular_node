@@ -1,0 +1,10 @@
+.fas{
+    height: 20px;
+    width: 20px;
+}
+.icon{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

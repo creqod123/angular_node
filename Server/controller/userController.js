@@ -10,23 +10,13 @@ const socket = require('../socket/index');
 // ============================= getall data show =========================== 
 
 exports.getAll = (async (req, res, next) => {
-
+    console.log("check :- ")
     try {
-
-        const email = req.body.email
-        const pageNumber = req.body.pageNumber;
-        const result = {};
-        const totalPosts = await adminProduct.countDocuments().exec();
-        let startIndex = pageNumber * 9;
-        result.totalPosts = totalPosts;
-        result.data = await adminProduct.find()
-            .sort("-_id")
-            .skip(startIndex)
-            .limit(9)
-            .exec();
+        
+        data = await adminProduct.find()
         res.status(200).json({
             message: "complete",
-            data: result
+            data,
         })
     }
     catch (error) {

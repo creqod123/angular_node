@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  check: boolean = false
   title = 'Client';
 }
-
-

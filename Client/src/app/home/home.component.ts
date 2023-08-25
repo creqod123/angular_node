@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service'
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  allProduct: any = []
+
+  constructor(private userData: AuthService) {
+    userData.users().subscribe((data) => {
+      this.allProduct = data
+      this.allProduct = this.allProduct.data
+      console.log("data := ", this.allProduct)
+    })
+  }
 }

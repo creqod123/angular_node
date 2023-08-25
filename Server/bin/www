@@ -8,7 +8,7 @@ var http = require('http');
 const socket = 4400
 const { Server } = require('socket.io')
 const cors = require('cors');
-var port = normalizePort(process.env.PORT || '4200');
+var port = normalizePort(process.env.SERVER_PORT);
 app.set('port', port);
 app.use(cors());
 var server = http.createServer(app);

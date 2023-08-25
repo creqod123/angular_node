@@ -56,8 +56,7 @@
                     </div>
 
                     <div class="text-center mt-4">
-                      <button mdbBtn color="indigo" mdbWavesEffect [disabled]="email.invalid">Sign
-                        up</button>
+                      <button mdbBtn color="indigo" mdbWavesEffect [disabled]="email.invalid || password.invalid" >Login</button>
                       <hr class="hr-light mb-3 mt-4">
                       <div class="inline-ul text-center d-flex justify-content-center">
                         <p>Don't have an account ? <a style="color: white; text-decoration: underline;"

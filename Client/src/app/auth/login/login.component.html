@@ -15,7 +15,7 @@
     </links>
   </mdb-navbar>
   <!--Intro Section-->
-  <form [formGroup]="validatingForm" (ngSubmit)="login()">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
     <section class="view intro-2">
       <div class="full-bg-img mask rgba-gradient">
         <div class="container flex-center">
@@ -33,44 +33,42 @@
                   <br>
                 </div>
               </div>
+
               <div class="col-md-6 col-xl-5 offset-xl-1">
-                <!--Form-->
                 <mdb-card class="wow fadeInRight" data-wow-delay="0.3s">
                   <mdb-card-body>
-                    <!--Header-->
+
                     <div class="text-center">
                       <h3 class="white-text"><mdb-icon fas icon="user" class="text-white"></mdb-icon> Login</h3>
                       <hr class="hr-light">
                     </div>
-                    <!--Body-->
+
                     <div class="md-form">
-                      <input type="email" id="form2" class="text-white form-control" mdbInput formControlName="email">
+                      <input required #email="ngModel" name="email" ngModel type="email" id="form2"
+                        class="text-white form-control" mdbInput>
                       <label for="form2" class="text-white">Your email</label>
-                      <span *ngIf="email && email.invalid && email.touched" style="color: red;">Enter Valid email</span>
                     </div>
+
                     <div class="md-form">
-                      <input type="password" id="form4" class="text-white form-control" mdbInput
-                        formControlName="password">
+                      <input required #password="ngModel" name="password" type="password" ngModel id="form4"
+                        class="text-white form-control" mdbInput>
                       <label for="form4" class="text-white">Your password</label>
-                      <span *ngIf="password && password.invalid && password.touched" style="color: red;">Enter Valid email</span>
                     </div>
-                    <!-- <div class="md-form">
-                      <a class="p-2 m-2 tw-ic"><mdb-icon fab icon="twitter" class="text-white"></mdb-icon></a>
-                      <a class="p-2 m-2 li-ic"><mdb-icon fab icon="linkedin-in" class="text-white"></mdb-icon></a>
-                      <a class="p-2 m-2 ins-ic"><mdb-icon fab icon="instagram" class="text-white"></mdb-icon></a>
-                    </div> -->
+
                     <div class="text-center mt-4">
-                      <button mdbBtn color="indigo" mdbWavesEffect>Sign up</button>
+                      <button mdbBtn color="indigo" mdbWavesEffect [disabled]="email.invalid">Sign
+                        up</button>
                       <hr class="hr-light mb-3 mt-4">
                       <div class="inline-ul text-center d-flex justify-content-center">
                         <p>Don't have an account ? <a style="color: white; text-decoration: underline;"
                             href="/register">Register Here !</a></p>
                       </div>
                     </div>
+
                   </mdb-card-body>
                 </mdb-card>
-                <!--/.Form-->
               </div>
+
             </div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,20 +7,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent {
 
-  validatingForm = new FormGroup({
-    email: new FormControl('',[Validators.required]),
-    password: new FormControl('',[Validators.required])
-  })
 
-  login() {
-    console.warn("check :- ",this.validatingForm.value)
+
+  login(value:any) {
+    console.warn("check :- ",value)
   }
 
-  get email(){
-    return this.validatingForm.get('email')
-  }
-  get password(){
-    return this.validatingForm.get('password')
-  }
 
 }

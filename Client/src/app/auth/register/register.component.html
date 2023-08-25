@@ -76,7 +76,7 @@
 
                     <div class="text-center mt-4">
                       <button mdbBtn color="indigo" mdbWavesEffect
-                        [disabled]="(user.invalid && user.touched) || (email.invalid && email.touched) || (password.invalid && password.touched) || (usertype.invalid && sellertype.invalid)">Sign
+                        [disabled]="user.invalid || email.invalid || password.invalid || usertype.invalid">Sign
                         up</button>
                       <hr class="hr-light mb-3 mt-4">
                       <div class="inline-ul text-center d-flex justify-content-center">

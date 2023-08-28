@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,11 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+
   checkUser: any = false;
   link: any;
-  constructor() {
-    const a = localStorage.getItem('user');
+  constructor(private routes: Router) {
+    const a = localStorage.getItem('userDatas');
     if (a !== null) {
       this.checkUser = true;
     }
@@ -18,7 +20,22 @@ export class NavbarComponent {
 
   logout() {
     this.checkUser = false;
-    localStorage.removeItem('user')
+    localStorage.removeItem('userDatas')
+  }
+
+  cart() {
+    this.routes.navigate(['user/cart'])
+  }
+
+  home() {
+    this.routes.navigate([''])
+  }
+
+  register() {
+    this.routes.navigate(['register'])
+  }
+  login() {
+    this.routes.navigate(['login'])
   }
 
 }

@@ -10,14 +10,13 @@ exports.register = (async function (req, res, next) {
 
     try {
 
-        const { email, password, conPassword, tel, type } = req.body
+        const { email, password, type } = req.body
         const pass = await bcrypt.hash(password, saltRounds)
         const check = await register.findOne({ email: email })
-        
+
         const data = {
             email: email,
             password: pass,
-            tel: tel,
             type: type
         }
 
@@ -26,27 +25,22 @@ exports.register = (async function (req, res, next) {
 
         if (mail != mail1) {
             res.status(200).json({
-                message: "Enter vaild email",
+                message: "Enter vaild Email",
             })
         }
         else if (check != null) {
             res.status(200).json({
-                message: "email already exist",
+                message: "Email already Exists",
             })
         }
-        else if (password == "" || password != conPassword) {
+        else if (password == "") {
             res.status(200).json({
-                message: "Password_not_same",
-            })
-        }
-        else if (10 != tel.length) {
-            res.status(200).json({
-                message: "check number",
+                message: "Invalid Password",
             })
         }
         else if (type == "") {
             res.status(200).json({
-                message: "type",
+                message: "Invalid Type",
             })
         }
         else {
@@ -58,9 +52,9 @@ exports.register = (async function (req, res, next) {
 
             res.status(200).json({
                 message: "Succesfull",
-                email: email,
+                // email: email,
                 token: token,
-                type: type
+                // type: type
             })
         }
     }

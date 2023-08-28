@@ -20,8 +20,8 @@ router.get('/', async function (req, res, next) {
   res.end()
 });
 
-router.post("/register", registerController.register);
-router.post("/login", loginController.login);
+router.post("/register", registerController.register);    //
+router.post("/login", loginController.login);             //
 
 //            ============ Admin ============== 
 
@@ -37,15 +37,15 @@ router.post('/admin/stock', verifyToken, adminController.stock);
 
 //            ============ User ============== 
 
-router.get('/user', userController.getAll)
-router.post('/user/cart', userController.userCart)
-router.post('/user/checkout', userController.checkout)
-router.post('/user/order', userController.order);
-router.post('/user/detail', userController.detail);
-router.post('/user/orderupdate', userController.orderUpdate);
-router.post('/user/search', userController.search);
-router.post('/user/cartSaved', userController.cart);
-router.post('/user/cartRequest', userController.cartRequest);
+router.get('/user', userController.getAll)      //
+router.get('/user/cart', verifyToken, userController.userCart)    //
+router.post('/user/checkout', verifyToken, userController.checkout)
+router.post('/user/order', verifyToken, userController.order);
+router.post('/user/detail', verifyToken, userController.detail);
+router.post('/user/orderupdate', verifyToken, userController.orderUpdate);
+router.post('/user/search', verifyToken, userController.search);
+router.post('/user/cartSaved', verifyToken, userController.cart);   //
+router.post('/user/cartRequest', verifyToken, userController.cartRequest);
 
 //            ============ Controller by admin ============== 
 

@@ -23,21 +23,21 @@ exports.login = (async (req, res, next) => {
                 }, process.env.JWT_SECRET_KEY);
                 res.status(200).json({
                     message: "complete",
-                    email: check.email,
-                    type: check.type,
-                    id: check.id,
+                    // email: check.email,
+                    // type: check.type,
+                    // id: check.id,
                     token: token
                 })
             }
             else {
                 res.status(200).json({
-                    message: "Password_not_same",
+                    message: "Password Not Same",
                 })
             }
         }
         else {
             res.status(200).json({
-                message: "Enter vaild email",
+                message: "Enter Vaild Email",
             })
         }
     }

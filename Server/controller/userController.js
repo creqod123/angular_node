@@ -10,9 +10,7 @@ const socket = require('../socket/index');
 // ============================= getall data show =========================== 
 
 exports.getAll = (async (req, res, next) => {
-    console.log("check :- ")
     try {
-        
         data = await adminProduct.find()
         res.status(200).json({
             message: "complete",
@@ -31,11 +29,11 @@ exports.getAll = (async (req, res, next) => {
 exports.userCart = (async (req, res, next) => {
 
     try {
-
+        const cartData = await cart.findOne({ userId: req.user._id }).populate('productCart.productId')
         res.status(200).json({
             success: true,
             message: "complete",
-            data: req.data
+            data: cartData
         })
     }
     catch (error) {
@@ -187,14 +185,16 @@ exports.search = (async (req, res, next) => {
 
 exports.cart = (async (req, res, next) => {
     try {
-
-        const a = await cart.findOne({ userId: req.user._id })
-        const userReqData = req.body.data
-
-        if (a !== null) {
-            await cart.deleteOne({ _id: a._id })
+        const data = await cart.findOne({ userId: req.user._id })
+        if (data) {
+            data.productCart.map((item) => {
+                console.log(item.productId)
+            })
+            await cart.updateOne({ userId: req.user._id }, { $push: { productCart: { productId: req.body._id, quantity: 1 } } })
         }
-        await cart.create({ userId: req.user._id, productCart: userReqData })
+        else {
+            await cart.create({ userId: req.user._id, productCart: [{ productId: req.body, quantity: 1 }] })
+        }
         res.status(200).json({
             success: true,
             message: "complete",

@@ -21,8 +21,10 @@
                     STOCK<h5> {{item.stock}}</h5>
                 </div>
             </mdb-card-title>
-            <button [disabled]="item.stock === 0" mdbBtn color="primary" mdbWavesEffect
-                style="width: 100%;font-size: 16px;">{{item.stock === 0 ? "Out of stock":"Add to Cart"}}</button>
+            <div>
+                <button [disabled]="item.stock === 0" mdbBtn color="primary" mdbWavesEffect (click)="addToCart(item)"
+                    style="width: 100%;font-size: 16px;">{{item.stock === 0 ? "Out of stock":"Add to Cart"}}</button>
+            </div>
         </mdb-card-body>
     </mdb-card>
 </div>

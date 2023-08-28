@@ -14,6 +14,12 @@
       </ul>
     </links>
   </mdb-navbar>
+
+  <!-- <div class="message">
+    <div class="alert alert-success" role="alert">This is a success alert—check it out!</div>
+    <div class="alert alert-danger" role="alert">This is a danger alert—check it out!</div>
+  </div> -->
+
   <!--Intro Section-->
   <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
     <section class="view intro-2">
@@ -56,7 +62,8 @@
                     </div>
 
                     <div class="text-center mt-4">
-                      <button mdbBtn color="indigo" mdbWavesEffect [disabled]="email.invalid || password.invalid" >Login</button>
+                      <button mdbBtn color="indigo" mdbWavesEffect
+                        [disabled]="email.invalid || password.invalid">Login</button>
                       <hr class="hr-light mb-3 mt-4">
                       <div class="inline-ul text-center d-flex justify-content-center">
                         <p>Don't have an account ? <a style="color: white; text-decoration: underline;"

@@ -1,1 +1,28 @@
-<p>cart works!</p>
+<app-navbar></app-navbar>
+
+<div class="card-deck">
+    <mdb-card *ngFor="let item of cartData">
+        <div class="view overlay waves-light zoom" mdbWavesEffect>
+            <mdb-card-img src="https://mdbootstrap.com/img/Photos/Others/images/3.webp" alt="Card image cap"
+                class="img-fluid"></mdb-card-img>
+            <a>
+                <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+        <mdb-card-body>
+            <mdb-card-title style="display: flex; align-items: center; flex-direction: column;">
+                PRODUCT NAME<h4>{{item.productId.productName}}</h4>
+            </mdb-card-title>
+            <mdb-card-title style="display: flex;justify-content: space-evenly;">
+                <div>
+                    PRICE<h5> {{item.productId.price}}</h5>
+                </div>
+                <div>
+                    STOCK<h5> {{item.quantity}}</h5>
+                </div>
+            </mdb-card-title>
+            <button [disabled]="item.stock === 0" mdbBtn color="primary" mdbWavesEffect
+                style="width: 100%;font-size: 16px;">{{item.stock === 0 ? "Out of stock":"Add to Cart"}}</button>
+        </mdb-card-body>
+    </mdb-card>
+</div>

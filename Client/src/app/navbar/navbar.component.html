@@ -3,13 +3,15 @@
     <links>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect>Home</a>
+                <a class="nav-link waves-light" (click)="home()" mdbWavesEffect>Home</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons icon">
             <li class="nav-item">
                 <a class="nav-link">
-                    <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
+                    <a (click)="cart()">
+                        <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
+                    </a>
                 </a>
             </li>
             <li class="nav-item">
@@ -18,8 +20,8 @@
                         <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
                         <div class="dropdown-menu dropdown-menu-right dropdown-primary"
                             [style.display]="(checkUser) ? 'none' : ''">
-                            <a class="dropdown-item" href="/register">Sign in</a>
-                            <a class="dropdown-item" href="/login">Login</a>
+                            <a class="dropdown-item" (click)="register()">Sign in</a>
+                            <a class="dropdown-item" (click)="login()">Login</a>
                         </div>
                         <div class="dropdown-menu dropdown-menu-right dropdown-primary"
                             [style.display]="(checkUser) ? '' : 'none'">

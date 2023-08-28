@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service'
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -7,7 +9,17 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  constructor(private registerData: AuthService, private router: Router) { }
+
   register(value: any) {
-    console.warn("check :- ",value)
+    this.registerData.authRegister(value).subscribe((data: any) => {
+      if (data.message === 'complete') {
+        localStorage.setItem('token', data.token)
+        this.router.navigate([''])
+      }
+      else {
+        console.log("errorMessage", data.message)
+      }
+    })
   }
 }

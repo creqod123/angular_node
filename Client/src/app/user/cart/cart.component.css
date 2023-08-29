@@ -1,6 +1,24 @@
 .card-deck {
     display: grid;
-    margin:10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
     grid-gap: 5%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.custbtm {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    font-weight: 900;
+}
+
+.custbtm2 {
+    padding: 10px;
+    font-weight: 900;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

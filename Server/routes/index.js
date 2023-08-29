@@ -39,13 +39,15 @@ router.post('/admin/stock', verifyToken, adminController.stock);
 
 router.get('/user', userController.getAll)      //
 router.get('/user/cart', verifyToken, userController.userCart)    //
-router.post('/user/checkout', verifyToken, userController.checkout)
-router.post('/user/order', verifyToken, userController.order);
+router.post('/user/cartSaved', verifyToken, userController.cart);   //
+router.post('/user/cartRemove', verifyToken, userController.removeCart);   //
+router.post('/user/checkout', verifyToken, userController.checkout) //
+router.get('/user/order', verifyToken, userController.order); //
+
 router.post('/user/detail', verifyToken, userController.detail);
 router.post('/user/orderupdate', verifyToken, userController.orderUpdate);
 router.post('/user/search', verifyToken, userController.search);
-router.post('/user/cartSaved', verifyToken, userController.cart);   //
-router.post('/user/cartRequest', verifyToken, userController.cartRequest);
+// router.post('/user/cartRequest', verifyToken, userController.cartRequest);
 
 //            ============ Controller by admin ============== 
 

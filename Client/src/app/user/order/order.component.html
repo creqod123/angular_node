@@ -1,1 +1,44 @@
-<p>order works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="md-form">
+                <input type="text" class="form-control" id="search" mdbInput />
+                <label for="search">Search</label>
+            </div>
+        </div>
+    </div>
+    <table mdbTable class="z-depth-1">
+        <thead>
+            <tr>
+                <th *ngFor="let head of headElements">
+                    {{ head }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of buyOrderProduct; let i = index">
+                <th>{{i}}</th>
+                <th>{{item.productId.productName}}</th>
+                <th>{{item.price}}</th>
+                <th>{{item.quantity}}</th>
+                <th>{{item.status}}</th>
+                <th>
+                    <button class="orderBtn1" (click)="address(item.addressId)">
+                        <mdb-icon fas icon="edit"></mdb-icon>
+                    </button>
+                </th>
+                <th>
+                    <button class="orderBtn2">
+                        <mdb-icon fas icon="edit"></mdb-icon>
+                    </button>
+                </th>
+                <th>
+                    <button class="orderBtn3">
+                        <mdb-icon fas icon="trash-alt"></mdb-icon>
+                    </button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -2,19 +2,20 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const address = new Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "register",
+        required: true
+    },
     fullName: {
         type: String,
         require: true
     },
-    house: {
+    email: {
         type: String,
         require: true
     },
-    area: {
-        type: String,
-        require: true
-    },
-    city: {
+    address: {
         type: String,
         require: true
     },

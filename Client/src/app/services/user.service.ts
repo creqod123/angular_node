@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../../Client/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,31 +9,62 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   userLoginCheck: any = false;
-  url = 'http://localhost:4500/user';
-  userData = localStorage.getItem('token') || '{}';
+  url = `${environment.apiUrl}:${environment.port}/user`;
 
   constructor(private http: HttpClient) { }
 
   homeProduct() {
-    return this.http.get(this.url)
+    return this.http.get(this.url);
   }
 
-  cartDataShow(): Observable<any> {
+  cartDataShow() {
+    const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: this.userData
+        token: userData
       })
     };
-    return this.http.get(`${this.url}/cart`, httpOptions)
+    return this.http.get(`${this.url}/cart`, httpOptions);
   }
 
   addToCart(data: any) {
+    const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: this.userData
+        token: userData
       })
     };
-    return this.http.post(`${this.url}/cartSaved`, data, httpOptions)
+    return this.http.post(`${this.url}/cartSaved`, data, httpOptions);
+  }
+
+  removeToCart(data: any) {
+    const userData = localStorage.getItem('token') || '{}';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: userData
+      })
+    };
+    return this.http.post(`${this.url}/cartRemove`, { id: data }, httpOptions);
+  }
+
+  productBuy(data: any, address: any) {
+    const userData = localStorage.getItem('token') || '{}';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: userData
+      })
+    };
+    return this.http.post(`${this.url}/checkout`, { product: data, address: address }, httpOptions);
+  }
+
+  buyOrderGet() {
+    const userData = localStorage.getItem('token') || '{}';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: userData
+      })
+    };
+    return this.http.get(`${this.url}/order`, httpOptions);
   }
 
 }

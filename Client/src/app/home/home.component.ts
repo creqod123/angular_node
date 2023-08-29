@@ -8,19 +8,25 @@ import { UserService } from '../services/user.service'
 })
 export class HomeComponent {
 
-  allProduct: any = []
+  allProduct: any = [];
+  cartError: any;
 
   constructor(private userData: UserService) {
     userData.homeProduct().subscribe((data) => {
-      this.allProduct = data
-      this.allProduct = this.allProduct.data
+      this.allProduct = data;
+      this.allProduct = this.allProduct.data;
     })
   }
 
   addToCart(data: any) {
-    this.userData.addToCart(data).subscribe((data)=>{
-      console.log("data",data)
-    })
+    const userChek = localStorage.getItem('token')
+    if (userChek) {
+      this.cartError = true;
+      this.userData.addToCart(data).subscribe()
+    }
+    else {
+      this.cartError = false;
+    }
   }
 
 }

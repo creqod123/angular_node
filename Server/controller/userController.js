@@ -49,34 +49,32 @@ exports.userCart = (async (req, res, next) => {
 exports.checkout = (async (req, res, next) => {
 
     try {
-        const id = req.body[1]
-        const check = await register.find({ _id: id })
-        const userId = check[0]._id
-        let data = req.body[0]
-
-
-        data.map(async (product) => {
-            const { _id, productName, price, quantity, fullName, house, area, city, pincode } = product.cardData
-            const sellerId = await adminProduct.findOne({ _id: _id })
-            const id = await address.create({
-                fullName: fullName,
-                house: house,
-                area: area,
-                city: city,
-                pincode: pincode
-            })
+        const product = req.body.product;
+        const addressData = req.body.address;
+        const user = req.user._id;
+        let checkAddress = await address.findOne({ userId: user })
+        if (!checkAddress) {
+            checkAddress = await address.create({
+                userId: user,
+                fullName: addressData.ModalName,
+                email: addressData.ModalEmail,
+                address: addressData.ModalAddress,
+                pincode: addressData.ModalPincode
+            });
+        }
+        product.map(async (product) => {
+            const { _id, price, adminId } = product.productId
+            const { quantity } = product
             await checkout.create({
                 quantity: quantity,
                 price: price,
                 status: "Pending",
                 productId: _id,
-                userId: userId,
-                sellerId: sellerId.adminId,
-                addressId: id._id
+                userId: user,
+                sellerId: adminId,
+                addressId: checkAddress._id
             })
         })
-
-        socket.productCheckout('productCheckout');
         res.status(200).json({
             success: true,
             message: "complete",
@@ -118,11 +116,11 @@ exports.detail = (async (req, res, next) => {
 
 exports.order = (async (req, res, next) => {
     try {
-        const data = await address.find({ _id: req.body._id })
+        const product = await checkout.find({ userId: req.user._id }).populate('productId').populate('addressId')
         res.status(200).json({
             success: true,
             message: "complete",
-            data: data
+            data: product
         })
     }
     catch (error) {
@@ -181,15 +179,12 @@ exports.search = (async (req, res, next) => {
     }
 });
 
-// ============================= User cart =========================== 
+// ============================= User add to cart =========================== 
 
 exports.cart = (async (req, res, next) => {
     try {
         const data = await cart.findOne({ userId: req.user._id })
         if (data) {
-            data.productCart.map((item) => {
-                console.log(item.productId)
-            })
             await cart.updateOne({ userId: req.user._id }, { $push: { productCart: { productId: req.body._id, quantity: 1 } } })
         }
         else {
@@ -207,29 +202,54 @@ exports.cart = (async (req, res, next) => {
         })
     }
 });
-// ============================= User cart request =========================== 
 
-exports.cartRequest = (async (req, res, next) => {
+// ============================= User remove to cart =========================== 
+
+exports.removeCart = (async (req, res, next) => {
     try {
-
-        let sql_data_
-
-        const sqlQuery = "SELECT * FROM test.product WHERE id = 1;"
-        const rows = con.query(sqlQuery, (a, b) => {
-            sql_data_ = b
+        const data = await cart.findOne({ userId: req.user._id });
+        data.productCart.map((item, i = 0) => {
+            if (item._id == req.body.id) {
+                data.productCart.splice(i, 1)
+            }
         });
-        const product = await cart.findOne({ userId: req.user._id }).populate('productCart.productId')
+        await cart.findOneAndDelete({ userId: req.user._id });
+        await cart.create({ userId: req.user._id, productCart: data.productCart });
+
         res.status(200).json({
             success: true,
             message: "complete",
-            data: product,
-            data_1: sql_data_
-        })
+            data: data
+        });
     }
     catch (error) {
         res.status(404).json({
             success: false,
-            message: "fail",
-        })
+            message: error,
+        });
     }
 });
+
+// ============================= User cart request ===========================
+// exports.cartRequest = (async (req, res, next) => {
+//     try {
+//         let sql_data_
+//         const sqlQuery = "SELECT * FROM test.product WHERE id = 1;"
+//         const rows = con.query(sqlQuery, (a, b) => {
+//             sql_data_ = b
+//         });
+//         const product = await cart.findOne({ userId: req.user._id }).populate('productCart.productId')
+//         res.status(200).json({
+//             success: true,
+//             message: "complete",
+//             data: product,
+//             data_1: sql_data_
+//         })
+//     }
+//     catch (error) {
+//         res.status(404).json({
+//             success: false,
+//             message: "fail",
+//         })
+//     }
+// });

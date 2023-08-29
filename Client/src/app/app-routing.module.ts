@@ -4,6 +4,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './user/cart/cart.component';
+import { OrderComponent } from './user/order/order.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'cart',
         component: CartComponent
+      },
+      {
+        path: 'order',
+        component: OrderComponent
       }
     ]
   }

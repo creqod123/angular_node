@@ -12,7 +12,7 @@ export class NavbarComponent {
   checkUser: any = false;
   link: any;
   constructor(private routes: Router) {
-    const a = localStorage.getItem('userDatas');
+    const a = localStorage.getItem('token');
     if (a !== null) {
       this.checkUser = true;
     }
@@ -20,7 +20,8 @@ export class NavbarComponent {
 
   logout() {
     this.checkUser = false;
-    localStorage.removeItem('userDatas')
+    localStorage.removeItem('token')
+    window.location.href = "http://localhost:4200";
   }
 
   cart() {
@@ -29,6 +30,10 @@ export class NavbarComponent {
 
   home() {
     this.routes.navigate([''])
+  }
+
+  order() {
+    this.routes.navigate(['user/order'])
   }
 
   register() {

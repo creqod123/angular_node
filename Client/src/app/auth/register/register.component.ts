@@ -20,6 +20,6 @@ export class RegisterComponent {
       else {
         console.log("errorMessage", data.message)
       }
-    })
+    })  
   }
 }

@@ -5,6 +5,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './user/cart/cart.component';
 import { OrderComponent } from './user/order/order.component';
+import { AddComponent } from './seller/add/add.component';
+import { SellorderComponent } from './seller/sellorder/sellorder.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -15,11 +18,12 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-
-  // ========================= User =========================
-
   {
     path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'user',
     component: HomeComponent
   },
   {
@@ -42,57 +46,30 @@ const routes: Routes = [
       }
     ],
   },
-
-  // ========================= Seller =========================
-
-  // {
-  //   path: 'seller',
-  // },
-  // {
-  //   path: 'seller',
-  //   canActivateChild: [() => {
-  //     let check = false;
-  //     if (localStorage.getItem('type') === 'seller') {
-  //       check = true;
-  //     }
-  //     return check;
-  //   }],
-  //   children: [
-  //     {
-  //       path: 'cart',
-  //     },
-  //     {
-  //       path: 'order',
-  //       component: OrderComponent
-  //     }
-  //   ],
-  // }
-
-  // ========================= Admin =========================
-
-  // {
-  //   path: 'seller',
-  // },
-  // {
-  //   path: 'seller',
-  //   canActivateChild: [() => {
-  //     let check = false;
-  //     if (localStorage.getItem('type') === 'seller') {
-  //       check = true;
-  //     }
-  //     return check;
-  //   }],
-  //   children: [
-  //     {
-  //       path: 'cart',
-  //     },
-  //     {
-  //       path: 'order',
-  //       component: OrderComponent
-  //     }
-  //   ],
-  // }
-
+  {
+    path: 'seller',
+    canActivateChild: [() => {
+      let check = false;
+      if (localStorage.getItem('type') === 'seller') {
+        check = true;
+      }
+      return check;
+    }],
+    children: [
+      {
+        path: 'add',
+        component: AddComponent
+      },
+      {
+        path: 'sellorder',
+        component: SellorderComponent
+      }
+    ],
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  },
 ];
 
 @NgModule({

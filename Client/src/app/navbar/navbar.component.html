@@ -67,56 +67,13 @@
     [style.display]="userType === 'seller' ? '' : 'none' ">
     <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
     <links>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link waves-light" (click)="home()" mdbWavesEffect>Home</a>
-            </li>
-        </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons icon">
             <li class="nav-item">
-                <a class="nav-link waves-light" (click)="order()" mdbWavesEffect>Order</a>
+                <a class="nav-link waves-light" (click)="add()" mdbWavesEffect>Add</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link">
-                    <a (click)="cart()">
-                        <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
-                    </a>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="background: none; border: none;">
-                    <div class="btn-group" mdbDropdown>
-                        <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-                            <button class="dropdown-item" (click)="logout()">Log out</button>
-                        </div>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </links>
-</mdb-navbar>
-
-<!-- ==================== when type is admin ==================== -->
-
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
-    [style.display]="userType === 'ceo' ? '' : 'none' ">
-    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
-    <links>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link waves-light" (click)="home()" mdbWavesEffect>Home</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons icon">
-            <li class="nav-item">
-                <a class="nav-link waves-light" (click)="order()" mdbWavesEffect>Order</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">
-                    <a (click)="cart()">
-                        <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
-                    </a>
+                    <a (click)="sellOrder()">order</a>
                 </a>
             </li>
             <li class="nav-item">

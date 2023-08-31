@@ -14,7 +14,10 @@ import {ReactiveFormsModule} from '@angular/forms'
 import {FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
 import { CartComponent } from './user/cart/cart.component';
-import { OrderComponent } from './user/order/order.component'
+import { OrderComponent } from './user/order/order.component';
+import { AddComponent } from './seller/add/add.component';
+import { SellorderComponent } from './seller/sellorder/sellorder.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { OrderComponent } from './user/order/order.component'
     NavbarComponent,
     CartComponent,
     OrderComponent,
+    AddComponent,
+    SellorderComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

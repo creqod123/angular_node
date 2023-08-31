@@ -1,4 +1,115 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
+    [style.display]="userType === null ? '' : 'none' ">
+    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-light" (click)="home()" mdbWavesEffect>Home</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons icon">
+            <li class="nav-item">
+                <a class="nav-link" style="background: none; border: none;">
+                    <div class="btn-group" mdbDropdown>
+                        <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
+                            [style.display]="(checkUser) ? 'none' : ''">
+                            <a class="dropdown-item" (click)="register()">Sign in</a>
+                            <a class="dropdown-item" (click)="login()">Login</a>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
+                            [style.display]="(checkUser) ? '' : 'none'">
+                            <button class="dropdown-item" (click)="logout()">Log out</button>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
+
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
+    [style.display]="userType === 'user' ? '' : 'none' ">
+    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-light" (click)="home()" mdbWavesEffect>Home</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons icon">
+            <li class="nav-item">
+                <a class="nav-link waves-light" (click)="order()" mdbWavesEffect>Order</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <a (click)="cart()">
+                        <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
+                    </a>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="background: none; border: none;">
+                    <div class="btn-group" mdbDropdown>
+                        <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
+                            [style.display]="(checkUser) ? 'none' : ''">
+                            <a class="dropdown-item" (click)="register()">Sign in</a>
+                            <a class="dropdown-item" (click)="login()">Login</a>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
+                            [style.display]="(checkUser) ? '' : 'none'">
+                            <button class="dropdown-item" (click)="logout()">Log out</button>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
+
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
+    [style.display]="userType === 'seller' ? '' : 'none' ">
+    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-light" (click)="home()" mdbWavesEffect>Home</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons icon">
+            <li class="nav-item">
+                <a class="nav-link waves-light" (click)="order()" mdbWavesEffect>Order</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <a (click)="cart()">
+                        <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
+                    </a>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="background: none; border: none;">
+                    <div class="btn-group" mdbDropdown>
+                        <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
+                            [style.display]="(checkUser) ? 'none' : ''">
+                            <a class="dropdown-item" (click)="register()">Sign in</a>
+                            <a class="dropdown-item" (click)="login()">Login</a>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
+                            [style.display]="(checkUser) ? '' : 'none'">
+                            <button class="dropdown-item" (click)="logout()">Log out</button>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
+
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
+    [style.display]="userType === 'ceo' ? '' : 'none' ">
     <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
     <links>
         <ul class="navbar-nav mr-auto">

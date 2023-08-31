@@ -9,23 +9,8 @@ let emailDetail
 // ============================= Admin get product =========================== 
 
 exports.getAll = (async (req, res, next) => {
-
     try {
-
-        const pageNumber = req.body.paginat
-        const data = {};
-        await register.find({ _id: req.body._id })
-        const id = req.body._id
-
-
-        const totalPosts = await adminProduct.find({ adminId: id }).countDocuments().exec();
-        let startIndex = pageNumber * 9;
-        data.totalPosts = totalPosts;
-        data.data = await adminProduct.find({ adminId: id })
-            .sort("-_id")
-            .skip(startIndex)
-            .limit(9)
-            .exec();
+        const data = await adminProduct.find({ adminId: req.user._id })
         res.status(200).json({
             success: true,
             message: "complete",

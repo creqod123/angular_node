@@ -11,7 +11,7 @@ export class NavbarComponent {
 
 
   checkUser: any = false;
-  userType: any;    //
+  userType: any;
   link: any;
 
   constructor(private routes: Router, private auth: AuthService) {

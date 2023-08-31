@@ -22,7 +22,7 @@ export class HomeComponent {
     const userChek = localStorage.getItem('token')
     if (userChek) {
       this.cartError = true;
-      this.userData.addToCart(data).subscribe()
+      this.userData.addToCart(data).subscribe();
     }
     else {
       this.cartError = false;

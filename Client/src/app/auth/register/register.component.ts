@@ -14,11 +14,11 @@ export class RegisterComponent {
   register(value: any) {
     this.registerData.authRegister(value).subscribe((data: any) => {
       if (data.message === 'complete') {
-        localStorage.setItem('token', data.token)
-        this.router.navigate([''])
+        localStorage.setItem('token', data.token);
+        this.router.navigate(['']);
       }
       else {
-        console.log("errorMessage", data.message)
+        console.log("errorMessage", data.message);
       }
     })  
   }

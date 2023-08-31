@@ -21,7 +21,7 @@ export class UserService {
     const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData
+        token: userData,
       })
     };
     return this.http.get(`${this.url}/cart`, httpOptions);
@@ -31,7 +31,7 @@ export class UserService {
     const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData
+        token: userData,
       })
     };
     return this.http.post(`${this.url}/cartSaved`, data, httpOptions);
@@ -41,7 +41,7 @@ export class UserService {
     const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData
+        token: userData,
       })
     };
     return this.http.post(`${this.url}/cartRemove`, { id: data }, httpOptions);
@@ -51,7 +51,7 @@ export class UserService {
     const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData
+        token: userData,
       })
     };
     return this.http.post(`${this.url}/checkout`, { product: data, address: address }, httpOptions);
@@ -61,7 +61,7 @@ export class UserService {
     const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData
+        token: userData,
       })
     };
     return this.http.get(`${this.url}/order`, httpOptions);

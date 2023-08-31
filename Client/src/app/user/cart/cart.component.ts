@@ -83,7 +83,7 @@ export class CartComponent {
 
   buyProduct() {
     this.userCart.productBuy(this.cartData, this.validatingForm.value).subscribe(()=>{
-      window.location.reload()
+      window.location.reload();
     })
   }
 

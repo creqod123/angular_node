@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../Client/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  types = new BehaviorSubject<any>('');
+  checkTypes = this.types.asObservable();
+
+  constructor(private http: HttpClient) {
+    const data = localStorage.getItem('type');
+    this.types.next(data);
+  }
   url = `${environment.apiUrl}:${environment.port}`;
+
 
   authLogin(data: any) {
     return this.http.post(`${this.url}/login`, data);

@@ -23,9 +23,7 @@ exports.login = (async (req, res, next) => {
                 }, process.env.JWT_SECRET_KEY);
                 res.status(200).json({
                     message: "complete",
-                    // email: check.email,
-                    // type: check.type,
-                    // id: check.id,
+                    type: check.type,
                     token: token
                 })
             }

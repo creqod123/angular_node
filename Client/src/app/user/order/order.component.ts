@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../../services/user.service'
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-order',
@@ -12,18 +12,18 @@ export class OrderComponent {
   headElements = ['NO', 'Product Name', 'Price', 'Quantity', 'Status', 'Address', 'Edit', 'Delete'];
 
   constructor(private orderGet: UserService) {
-    this.allOrderProduct()
+    this.allOrderProduct();
   }
 
   allOrderProduct() {
     this.orderGet.buyOrderGet().subscribe((product: any) => {
       this.buyOrderProduct = product.data;
-      console.log('this', this.buyOrderProduct)
+      console.log('this', this.buyOrderProduct);
     })
   }
 
   address(item: any) {
-    console.log(item)
+    console.log(item);
   }
 
 }

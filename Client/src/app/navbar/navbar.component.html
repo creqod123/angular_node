@@ -1,9 +1,11 @@
+<!-- ==================== when type is null ==================== -->
+
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
     [style.display]="userType === null ? '' : 'none' ">
     <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
     <links>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="true">
                 <a class="nav-link waves-light" (click)="home()" mdbWavesEffect>Home</a>
             </li>
         </ul>
@@ -12,14 +14,9 @@
                 <a class="nav-link" style="background: none; border: none;">
                     <div class="btn-group" mdbDropdown>
                         <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
-                            [style.display]="(checkUser) ? 'none' : ''">
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary">
                             <a class="dropdown-item" (click)="register()">Sign in</a>
                             <a class="dropdown-item" (click)="login()">Login</a>
-                        </div>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
-                            [style.display]="(checkUser) ? '' : 'none'">
-                            <button class="dropdown-item" (click)="logout()">Log out</button>
                         </div>
                     </div>
                 </a>
@@ -27,6 +24,8 @@
         </ul>
     </links>
 </mdb-navbar>
+
+<!-- ==================== when type is user ==================== -->
 
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
     [style.display]="userType === 'user' ? '' : 'none' ">
@@ -52,13 +51,7 @@
                 <a class="nav-link" style="background: none; border: none;">
                     <div class="btn-group" mdbDropdown>
                         <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
-                            [style.display]="(checkUser) ? 'none' : ''">
-                            <a class="dropdown-item" (click)="register()">Sign in</a>
-                            <a class="dropdown-item" (click)="login()">Login</a>
-                        </div>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
-                            [style.display]="(checkUser) ? '' : 'none'">
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary">
                             <button class="dropdown-item" (click)="logout()">Log out</button>
                         </div>
                     </div>
@@ -67,6 +60,8 @@
         </ul>
     </links>
 </mdb-navbar>
+
+<!-- ==================== when type is seller ==================== -->
 
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
     [style.display]="userType === 'seller' ? '' : 'none' ">
@@ -92,13 +87,7 @@
                 <a class="nav-link" style="background: none; border: none;">
                     <div class="btn-group" mdbDropdown>
                         <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
-                            [style.display]="(checkUser) ? 'none' : ''">
-                            <a class="dropdown-item" (click)="register()">Sign in</a>
-                            <a class="dropdown-item" (click)="login()">Login</a>
-                        </div>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
-                            [style.display]="(checkUser) ? '' : 'none'">
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary">
                             <button class="dropdown-item" (click)="logout()">Log out</button>
                         </div>
                     </div>
@@ -107,6 +96,8 @@
         </ul>
     </links>
 </mdb-navbar>
+
+<!-- ==================== when type is admin ==================== -->
 
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
     [style.display]="userType === 'ceo' ? '' : 'none' ">
@@ -132,13 +123,7 @@
                 <a class="nav-link" style="background: none; border: none;">
                     <div class="btn-group" mdbDropdown>
                         <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
-                            [style.display]="(checkUser) ? 'none' : ''">
-                            <a class="dropdown-item" (click)="register()">Sign in</a>
-                            <a class="dropdown-item" (click)="login()">Login</a>
-                        </div>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-primary"
-                            [style.display]="(checkUser) ? '' : 'none'">
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary">
                             <button class="dropdown-item" (click)="logout()">Log out</button>
                         </div>
                     </div>

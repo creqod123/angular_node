@@ -11,7 +11,7 @@ export class NavbarComponent {
 
 
   checkUser: any = false;
-  userType: any;    // types
+  userType: any;    //
   link: any;
 
   constructor(private routes: Router, private auth: AuthService) {
@@ -36,7 +36,7 @@ export class NavbarComponent {
   }
 
   home() {
-    this.routes.navigate(['']);
+    this.routes.navigate([`${this.userType}`]);
   }
 
   order() {

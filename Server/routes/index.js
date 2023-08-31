@@ -43,11 +43,8 @@ router.post('/user/cartSaved', verifyToken, userController.cart);   //
 router.post('/user/cartRemove', verifyToken, userController.removeCart);   //
 router.post('/user/checkout', verifyToken, userController.checkout) //
 router.get('/user/order', verifyToken, userController.order); //
-
-router.post('/user/detail', verifyToken, userController.detail);
-router.post('/user/orderupdate', verifyToken, userController.orderUpdate);
-router.post('/user/search', verifyToken, userController.search);
-// router.post('/user/cartRequest', verifyToken, userController.cartRequest);
+router.post('/user/orderupdate', verifyToken, userController.addressUpdate); //
+router.post('/user/orderDelete', verifyToken, userController.delete); //
 
 //            ============ Controller by admin ============== 
 

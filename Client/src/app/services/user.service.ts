@@ -10,61 +10,78 @@ export class UserService {
 
   userLoginCheck: any = false;
   url = `${environment.apiUrl}:${environment.port}/user`;
+  userData: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.userData = localStorage.getItem('token') || '{}';
+  }
 
   homeProduct() {
     return this.http.get(this.url);
   }
 
   cartDataShow() {
-    const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData,
+        token: this.userData,
       })
     };
     return this.http.get(`${this.url}/cart`, httpOptions);
   }
 
   addToCart(data: any) {
-    const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData,
+        token: this.userData,
       })
     };
     return this.http.post(`${this.url}/cartSaved`, data, httpOptions);
   }
 
   removeToCart(data: any) {
-    const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData,
+        token: this.userData,
       })
     };
     return this.http.post(`${this.url}/cartRemove`, { id: data }, httpOptions);
   }
 
   productBuy(data: any, address: any) {
-    const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData,
+        token: this.userData,
       })
     };
     return this.http.post(`${this.url}/checkout`, { product: data, address: address }, httpOptions);
   }
 
   buyOrderGet() {
-    const userData = localStorage.getItem('token') || '{}';
     const httpOptions = {
       headers: new HttpHeaders({
-        token: userData,
+        token: this.userData,
       })
     };
     return this.http.get(`${this.url}/order`, httpOptions);
+  }
+
+  addressEdit(data: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    return this.http.post(`${this.url}/orderupdate`, data, httpOptions);
+  }
+
+  orderDelete(data: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    data = { id: data };
+    return this.http.post(`${this.url}/orderDelete`, data, httpOptions);
   }
 
 }

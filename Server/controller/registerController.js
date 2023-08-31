@@ -54,7 +54,7 @@ exports.register = (async function (req, res, next) {
                 message: "Succesfull",
                 // email: email,
                 token: token,
-                // type: type
+                type: type
             })
         }
     }

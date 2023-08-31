@@ -14,12 +14,13 @@ export class RegisterComponent {
   register(value: any) {
     this.registerData.authRegister(value).subscribe((data: any) => {
       if (data.message === 'complete') {
+        localStorage.setItem('type', data.type);
         localStorage.setItem('token', data.token);
-        this.router.navigate(['']);
+        window.location.href = `${data.type}`;
       }
       else {
         console.log("errorMessage", data.message);
       }
-    })  
+    })
   }
 }

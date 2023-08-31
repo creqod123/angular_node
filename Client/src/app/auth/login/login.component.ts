@@ -17,8 +17,7 @@ export class LoginComponent {
       if (data.message === 'complete') {
         localStorage.setItem('token', data.token);
         localStorage.setItem('type', data.type);
-        const targetRoute = '';
-        window.location.href = ' ';
+        window.location.href = `${data.type}`;
       }
       else {
         this.loginError = data.message;

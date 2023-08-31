@@ -1,5 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -15,12 +15,22 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+
+  // ========================= User =========================
+
   {
     path: '',
     component: HomeComponent
   },
   {
     path: 'user',
+    canActivateChild: [() => {
+      let check = false;
+      if (localStorage.getItem('type') === 'user') {
+        check = true;
+      }
+      return check;
+    }],
     children: [
       {
         path: 'cart',
@@ -30,8 +40,58 @@ const routes: Routes = [
         path: 'order',
         component: OrderComponent
       }
-    ]
-  }
+    ],
+  },
+
+  // ========================= Seller =========================
+
+  // {
+  //   path: 'seller',
+  // },
+  // {
+  //   path: 'seller',
+  //   canActivateChild: [() => {
+  //     let check = false;
+  //     if (localStorage.getItem('type') === 'seller') {
+  //       check = true;
+  //     }
+  //     return check;
+  //   }],
+  //   children: [
+  //     {
+  //       path: 'cart',
+  //     },
+  //     {
+  //       path: 'order',
+  //       component: OrderComponent
+  //     }
+  //   ],
+  // }
+
+  // ========================= Admin =========================
+
+  // {
+  //   path: 'seller',
+  // },
+  // {
+  //   path: 'seller',
+  //   canActivateChild: [() => {
+  //     let check = false;
+  //     if (localStorage.getItem('type') === 'seller') {
+  //       check = true;
+  //     }
+  //     return check;
+  //   }],
+  //   children: [
+  //     {
+  //       path: 'cart',
+  //     },
+  //     {
+  //       path: 'order',
+  //       component: OrderComponent
+  //     }
+  //   ],
+  // }
 
 ];
 

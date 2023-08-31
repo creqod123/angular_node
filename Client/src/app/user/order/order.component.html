@@ -1,44 +1,114 @@
 <app-navbar></app-navbar>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 mx-auto">
-            <div class="md-form">
-                <input type="text" class="form-control" id="search" mdbInput />
-                <label for="search">Search</label>
+<div [style.display]="(loader)?'none':''">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="md-form">
+                    <input type="text" class="form-control" id="search" mdbInput />
+                    <label for="search">Search</label>
+                </div>
+            </div>
+        </div>
+        <table mdbTable class="z-depth-1">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of headElements">
+                        {{ head }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of buyOrderProduct; let i = index">
+                    <th>{{i+1}}</th>
+                    <th>{{item.productId.productName}}</th>
+                    <th>{{item.price}}</th>
+                    <th>{{item.quantity}}</th>
+                    <th>{{item.status}}</th>
+                    <th>
+                        <button type="button" class="orderBtn1" (click)="oldAddressId(item.addressId._id ,basicModal)"
+                            mdbWavesEffect>
+                            <mdb-icon fas icon="edit"></mdb-icon>
+                        </button>
+                    </th>
+                    <th>
+                        <button class="orderBtn2">
+                            <mdb-icon fas icon="edit"></mdb-icon>
+                        </button>
+                    </th>
+                    <th>
+                        <button class="orderBtn3" (click)="delete(item._id)">
+                            <mdb-icon fas icon="trash-alt"></mdb-icon>
+                        </button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ======================== Address edit ======================== -->
+
+    <div mdbModal #basicModal="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Enter Address</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        (click)="basicModal.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                        <input type="text" id="form34" class="form-control" mdbInput mdbValidate
+                            [formControl]="ModalName">
+                        <label for="form34">Your name</label>
+                        <mdb-error *ngIf="ModalName.invalid && (ModalName.dirty || ModalName.touched)">
+                            Input
+                            invalid
+                        </mdb-error>
+                    </div>
+                    <div class="md-form mb-5">
+                        <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                        <input type="email" id="form29" class="form-control" mdbInput mdbValidate
+                            [formControl]="ModalEmail" required>
+                        <label for="form29">Your email</label>
+                        <mdb-error *ngIf="ModalEmail.invalid && (ModalEmail.dirty || ModalEmail.touched)">
+                            Input invalid
+                        </mdb-error>
+                    </div>
+                    <div class="md-form mb-5">
+                        <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+                        <input type="number" id="form32" class="form-control" mdbInput mdbValidate
+                            [formControl]="ModalPincode">
+                        <label for="form32">Pincode</label>
+                        <mdb-error *ngIf="ModalPincode.invalid && (ModalPincode.dirty || ModalPincode.touched)">
+                            Input invalid
+                        </mdb-error>
+                    </div>
+                    <div class="md-form">
+                        <mdb-icon fas icon="location-arrow" class="prefix grey-text"></mdb-icon>
+                        <textarea type="text" id="form8" class="md-textarea form-control" rows="1" mdbInput mdbValidate
+                            [formControl]="ModalAddress"></textarea>
+                        <label for="form8">Address</label>
+                        <mdb-error *ngIf="ModalAddress.invalid && (ModalAddress.dirty || ModalAddress.touched)">
+                            Input invalid
+                        </mdb-error>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button mdbBtn color="unique" class="waves-light" mdbWavesEffect (click)="newAddress()"
+                        [disabled]="addressCheck()">Send
+                        <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <table mdbTable class="z-depth-1">
-        <thead>
-            <tr>
-                <th *ngFor="let head of headElements">
-                    {{ head }}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of buyOrderProduct; let i = index">
-                <th>{{i}}</th>
-                <th>{{item.productId.productName}}</th>
-                <th>{{item.price}}</th>
-                <th>{{item.quantity}}</th>
-                <th>{{item.status}}</th>
-                <th>
-                    <button class="orderBtn1" (click)="address(item.addressId)">
-                        <mdb-icon fas icon="edit"></mdb-icon>
-                    </button>
-                </th>
-                <th>
-                    <button class="orderBtn2">
-                        <mdb-icon fas icon="edit"></mdb-icon>
-                    </button>
-                </th>
-                <th>
-                    <button class="orderBtn3">
-                        <mdb-icon fas icon="trash-alt"></mdb-icon>
-                    </button>
-                </th>
-            </tr>
-        </tbody>
-    </table>
+</div>
+
+<!-- ========= Loader ========= -->
+<div class="loader spinner-border" role="status" [style.display]="(loader)?'':'none'">
+    <span class="sr-only">Loading...</span>
 </div>

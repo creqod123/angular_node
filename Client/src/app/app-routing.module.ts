@@ -1,8 +1,11 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
+
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
+
+import { ProductsComponent } from './user/products/products.component';
 import { CartComponent } from './user/cart/cart.component';
 import { OrderComponent } from './user/order/order.component';
 import { AddComponent } from './seller/add/add.component';
@@ -20,6 +23,10 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
+    path: '',
+    component: HomeComponent,
+  },
+  {
     path: 'user',
     canActivateChild: [() => {
       let check = false;
@@ -31,7 +38,7 @@ const routes: Routes = [
     children: [
       {
         path: 'product',
-        component: HomeComponent
+        component: ProductsComponent
       },
       {
         path: 'order',

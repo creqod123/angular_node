@@ -1,6 +1,0 @@
-.card-deck {
-    display: grid;
-    margin:10px 10px 10px 10px;
-    grid-gap: 5%;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}

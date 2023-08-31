@@ -18,7 +18,8 @@ import { OrderComponent } from './user/order/order.component';
 import { AddComponent } from './seller/add/add.component';
 import { SellorderComponent } from './seller/sellorder/sellorder.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProductComponent } from './seller/product/product.component'
+import { ProductComponent } from './seller/product/product.component';
+import { ProductsComponent } from './user/products/products.component'
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ProductComponent } from './seller/product/product.component'
     SellorderComponent,
     PageNotFoundComponent,
     ProductComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

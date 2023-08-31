@@ -8,6 +8,7 @@ import { OrderComponent } from './user/order/order.component';
 import { AddComponent } from './seller/add/add.component';
 import { SellorderComponent } from './seller/sellorder/sellorder.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductComponent } from './seller/product/product.component';
 
 const routes: Routes = [
   {
@@ -17,14 +18,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'user',
-    component: HomeComponent
   },
   {
     path: 'user',
@@ -37,12 +30,16 @@ const routes: Routes = [
     }],
     children: [
       {
-        path: 'cart',
-        component: CartComponent
+        path: 'product',
+        component: HomeComponent
       },
       {
         path: 'order',
         component: OrderComponent
+      },
+      {
+        path: 'cart',
+        component: CartComponent
       }
     ],
   },
@@ -56,6 +53,10 @@ const routes: Routes = [
       return check;
     }],
     children: [
+      {
+        path: 'product',
+        component: ProductComponent
+      },
       {
         path: 'add',
         component: AddComponent

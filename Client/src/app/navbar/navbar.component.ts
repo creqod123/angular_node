@@ -36,11 +36,11 @@ export class NavbarComponent {
     this.checkUser = false;
     localStorage.removeItem('token');
     localStorage.removeItem('type');
-    window.location.href = "http://localhost:4200";
+    window.location.href = "http://localhost:4200/login";
   }
 
   home() {
-    this.routes.navigate([`${this.userType}`]);
+    this.routes.navigate([`${this.userType}/product`]);
   }
 
   order() {
@@ -49,6 +49,10 @@ export class NavbarComponent {
 
   cart() {
     this.routes.navigate(['user/cart']);
+  }
+
+  sellProduct() {
+    this.routes.navigate(['seller/product']);
   }
 
   add() {

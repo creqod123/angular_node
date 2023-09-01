@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-let fs = require('fs');
-let p = require('path')
 
 const adminController = require('../controller/adminController')
 const ceoController = require('../controller/ceoControllers')
@@ -28,9 +26,10 @@ router.post("/login", loginController.login);             //
 router.get('/seller', verifyToken, adminController.getAll); //
 router.post('/seller/update', verifyToken, adminController.update); //
 router.post('/seller/remove', verifyToken, adminController.remove);
-router.post('/seller/add', verifyToken, adminController.add);
+router.post('/seller/add', verifyToken, adminController.add); //
+router.get('/seller/detail', verifyToken, adminController.detail); //
+router.post('/seller/delete', verifyToken, adminController.delete); //
 
-router.post('/seller/detail', verifyToken, adminController.detail);
 router.post('/seller/order', verifyToken, adminController.order);
 router.post('/seller/status', verifyToken, adminController.status);
 router.post('/seller/search', verifyToken, adminController.search);

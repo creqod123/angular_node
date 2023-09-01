@@ -1,0 +1,21 @@
+.orderBtn1,
+.orderBtn2,
+.orderBtn3 {
+    border: none;
+    background: none;
+    font-size: 20px;
+    transition: all ease-in-out 0.2s;
+}
+
+.orderBtn2:hover,
+.orderBtn3 {
+    color: red;
+}
+
+.orderBtn1 {
+    color: blue;
+}
+
+.modal-content {
+    width: 140%;
+}

@@ -1,7 +1,8 @@
-use canActivateChild for condition in routing (1.30 hr)
+Use canActivateChild for condition in routing (1.30 hr)
 Create loader and set all components (1 hr)
-api create for product update, add (1 hr)
-Show product and use formModule for validation of update product (1.30 hr)
+Api create for product update, add and delete (1 hr)
+Show product and use formModule for validation of update product (2 hr)
+Buyer detail show and delete buyer prodcut with api on model (2.30 hr) 
 
 ========================================== loader ==========================================
 

@@ -18,15 +18,15 @@ export class ProductComponent {
   constructor(private sellservice: SellerService) {
     this.validatingForm = new FormGroup({
       productName: new FormControl('', Validators.required),
-      price: new FormControl(Number, Validators.required),
-      stock: new FormControl(Number, Validators.required),
+      price: new FormControl('', Validators.required),
+      stock: new FormControl(0),
     });
     this.productGet();
   }
 
 
   addressCheck() {
-    if (this.validatingForm.value.productName && this.validatingForm.value.price && this.validatingForm.value.stock) {
+    if (this.validatingForm.value.productName && this.validatingForm.value.price) {
       return false;
     }
     return true;
@@ -65,6 +65,9 @@ export class ProductComponent {
   }
 
   update() {
+    if (this.validatingForm.value.stock === null) {
+      this.validatingForm.value.stock = 0;
+    } 
     this.loader = true;
     this.sellservice.updateProduct(this.validatingForm.value, this.productId).subscribe(() => {
       this.modalSH.hide();

@@ -51,4 +51,22 @@ export class SellerService {
     return this.http.post(`${this.url}/add`, form, httpOptions);
   }
 
+  buyOrderGet() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    return this.http.get(`${this.url}/detail`, httpOptions);
+  }
+
+  productDel(id: any, option: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    return this.http.post(`${this.url}/delete?=${option}`, { id: id }, httpOptions);
+  }
+
 }

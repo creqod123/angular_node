@@ -109,25 +109,31 @@ exports.remove = (async (req, res, next) => {
 
 exports.detail = (async (req, res, next) => {
     try {
-        const check = await register.findOne({ email: req.body.email })
-        if (check.type === "user") {
-            const id = check._id
-            const data = await checkout.find({ userId: id, sellerId: emailDetail }).populate('productId').populate('userId').populate('addressId')
-            res.status(200).json({
-                message: "complete",
-                data: data,
-            })
-        }
-        else {
-            emailDetail = check._id
-            const id = check._id
-            const data = await checkout.find({ sellerId: id }).populate('productId').populate('userId').populate('addressId')
-            res.status(200).json({
-                success: true,
-                message: "complete",
-                data: data,
-            })
-        }
+        const data = await checkout.find({ sellerId: req.user._id }).populate('productId').populate('addressId');
+        res.status(200).json({
+            success: true,
+            message: "complete",
+            data: data,
+        })
+    }
+    catch (error) {
+        res.status(404).json({
+            success: false,
+            message: "fail",
+        })
+    }
+});
+
+// ============================= Admin detail show =========================== 
+
+exports.delete = (async (req, res, next) => {
+    try {
+        await checkout.deleteOne({ _id: req.body.id })
+        console.log(req.body)
+        res.status(200).json({
+            success: true,
+            message: "complete",
+        })
     }
     catch (error) {
         res.status(404).json({

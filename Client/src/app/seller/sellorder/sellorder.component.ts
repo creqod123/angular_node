@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SellerService } from '../../services/seller.service';
 
 @Component({
   selector: 'app-sellorder',
@@ -6,5 +7,69 @@ import { Component } from '@angular/core';
   styleUrls: ['./sellorder.component.css']
 })
 export class SellorderComponent {
+  buyOrderProduct: any = [];
+  headElements = ['NO', 'User Name', 'Product Detail', 'Delete',];
+  headElements2 = ['#', 'Product name', 'Price', 'Quantity', 'Status', 'Address', 'Pincode', 'Remove'];
+  addressId: any;
+  loader: any = true;
+  modalSH: any;
+  modalSH2: any;
+  allProductShow: any;
+
+  getObjectKey(obj: any) {
+    return Object.keys(obj);
+  }
+  constructor(private orderGet: SellerService) {
+    this.allOrderProduct();
+  }
+
+  allOrderProduct() {
+    this.orderGet.buyOrderGet().subscribe((product: any) => {
+      let data = product.data;
+      let a = [];
+      let swap;
+      this.buyOrderProduct = [];
+
+      for (let i = 0; i < data.length; i++) {
+        for (let j = i + 1; j < data.length; j++) {
+          if (data[i].userId == data[j].userId) {
+            swap = data[i];
+            data[i] = data[j];
+            data[j] = swap;
+          }
+        }
+      }
+
+      for (let i = 0; i < data.length; i++) {
+        const matchingItems = [data[i]];
+        const name = data[i].addressId.fullName;
+        for (let j = i + 1; j < data.length; j++) {
+          if (data[i].userId === data[j].userId) {
+            matchingItems.push(data[j]);
+            data.splice(j, 1);
+            j--;
+          }
+        }
+        const entry: any = {};
+        entry[name] = matchingItems;
+        this.buyOrderProduct.push(entry);
+      }
+      this.loader = false;
+    })
+  }
+
+  showProduct(model: any, product: any, userName: any) {
+    this.modalSH2 = model;
+    this.modalSH2.show();
+    this.allProductShow = product[userName];
+  }
+
+  singleProduct(data: any, option: any) {
+    this.loader = true;
+    this.orderGet.productDel(data, option).subscribe(() => {
+      this.modalSH2.hide();
+      this.allOrderProduct();
+    })
+  }
 
 }

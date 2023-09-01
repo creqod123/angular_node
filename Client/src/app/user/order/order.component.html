@@ -28,7 +28,7 @@
                     <th>{{item.quantity}}</th>
                     <th>{{item.status}}</th>
                     <th>
-                        <button type="button" class="orderBtn1" (click)="oldAddressId(item.addressId._id ,basicModal)"
+                        <button type="button" class="orderBtn1" (click)="oldAddressId(item.addressId._id ,addressEditModal)"
                             mdbWavesEffect>
                             <mdb-icon fas icon="edit"></mdb-icon>
                         </button>
@@ -50,14 +50,14 @@
 
     <!-- ======================== Address edit ======================== -->
 
-    <div mdbModal #basicModal="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    <div mdbModal #addressEditModal="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
         aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h4 class="modal-title w-100 font-weight-bold">Enter Address</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        (click)="basicModal.hide()">
+                        (click)="addressEditModal.hide()">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>

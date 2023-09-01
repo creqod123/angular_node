@@ -27,9 +27,9 @@ router.post("/login", loginController.login);             //
 
 router.get('/seller', verifyToken, adminController.getAll); //
 router.post('/seller/update', verifyToken, adminController.update); //
-
-router.post('/seller/add', verifyToken, upload.single('image'), adminController.add);
 router.post('/seller/remove', verifyToken, adminController.remove);
+router.post('/seller/add', verifyToken, adminController.add);
+
 router.post('/seller/detail', verifyToken, adminController.detail);
 router.post('/seller/order', verifyToken, adminController.order);
 router.post('/seller/status', verifyToken, adminController.status);

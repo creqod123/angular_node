@@ -33,4 +33,22 @@ export class SellerService {
     return this.http.post(`${this.url}/update`, { id: id, form: data }, httpOptions);
   }
 
+  deleteProduct(id: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    return this.http.post(`${this.url}/remove`, { id: id }, httpOptions);
+  }
+
+  addProduct(form: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    return this.http.post(`${this.url}/add`, form, httpOptions);
+  }
+
 }

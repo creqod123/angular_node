@@ -72,8 +72,18 @@ export class ProductComponent {
     });
   }
 
-  Delete() {
-    console.log('delete');
+  deleteModalCall(data: any, item: any) {
+    this.productId = item._id;
+    this.modalSH = data;
+    this.modalSH.show();
+  }
+
+  productDelete() {
+    this.loader = true;
+    this.modalSH.hide();
+    this.sellservice.deleteProduct(this.productId).subscribe(() => {
+      this.productGet();
+    })
   }
 
 }

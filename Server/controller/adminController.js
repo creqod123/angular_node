@@ -52,24 +52,20 @@ exports.update = (async (req, res, next) => {
 exports.add = (async (req, res, next) => {
 
     try {
-        const check = await register.find({ _id: req.body._id })
-        req.body.image = req.file.path
-        req.body['adminId'] = req.body._id
-        delete req.body._id
-        if (check.length != 0) {
-            await adminProduct.create(req.body)
-            socket.addProduct('addProduct');
-            res.status(200).json({
-                success: true,
-                message: "complete"
-            })
-        }
-        else {
-            res.status(200).json({
-                success: false,
-                message: "complete fail",
-            })
-        }
+        const form = req.body;
+        await adminProduct.create({
+            image: 'dasdasdasdasdsd.png',
+            productName: form.productName,
+            price: form.price,
+            stock: form.stock,
+            adminId: req.user._id
+        })
+
+        res.status(200).json({
+            success: true,
+            message: "complete",
+            data: req.body,
+        })
     }
     catch (error) {
         res.status(404).json({
@@ -83,15 +79,23 @@ exports.add = (async (req, res, next) => {
 
 exports.remove = (async (req, res, next) => {
     try {
-        const id = req.body.id
-        await adminProduct.deleteOne({ _id: id })
-        await checkout.deleteOne({ productId: id })
-        socket.addProduct('removeProduct');
 
-        res.status(200).json({
-            success: true,
-            message: "complete",
-        })
+        const id = req.body.id;
+        const data = await checkout.find({ productId: id });
+        if (data.length >= 1) {
+            res.status(200).json({
+                success: true,
+                message: "Some One order your product",
+                data: data,
+            })
+        }
+        else {
+            await adminProduct.deleteOne({ _id: id, adminId: req.user._id });
+            res.status(200).json({
+                success: true,
+                message: "complete",
+            })
+        }
     }
     catch (error) {
         res.status(404).json({

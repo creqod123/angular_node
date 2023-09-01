@@ -3,16 +3,16 @@
 <!-- ========================================== Modal for address ==================================================== -->
 
 <button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
-    (click)="modal(frame)" mdbWavesEffect>Buy Now
+    (click)="modal(addressUpdateModal)" mdbWavesEffect>Buy Now
 </button>
 
-<div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+<div mdbModal #addressUpdateModal="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h4 class="modal-title w-100 font-weight-bold">Enter Address</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="addressUpdateModal.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

@@ -1,2 +1,50 @@
 <app-navbar></app-navbar>
-<h1>add</h1>
+<div [style.display]="(loader)?'none':''" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Add Product</h4>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="form34" class="form-control" mdbInput mdbValidate
+                        [formControl]="productName">
+                    <label for="form34">Product name</label>
+                    <mdb-error *ngIf="productName.invalid && (productName.dirty || productName.touched)">
+                        Input
+                        invalid
+                    </mdb-error>
+                </div>
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+                    <input type="number" id="form32" class="form-control" mdbInput mdbValidate [formControl]="price">
+                    <label for="form32">Price</label>
+                    <mdb-error *ngIf="price.invalid && (price.dirty || price.touched)">
+                        Input invalid
+                    </mdb-error>
+                </div>
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+                    <input type="number" id="form32" class="form-control" mdbInput mdbValidate [formControl]="stock">
+                    <label for="form32">Stock</label>
+                    <mdb-error *ngIf="stock.invalid && (stock.dirty || stock.touched)">
+                        Input invalid
+                    </mdb-error>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button mdbBtn color="unique" class="waves-light" mdbWavesEffect [disabled]="addressCheck()"
+                    (click)="add()">Send
+                    <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================ loader ================================ -->
+
+<div class="load loader spinner-border" role="status" [style.display]="(loader)?'':'none'">
+    <span class="sr-only">Loading...</span>
+</div>

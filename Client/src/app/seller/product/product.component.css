@@ -1,6 +1,21 @@
 .card-deck {
     display: grid;
-    margin:10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
     grid-gap: 5%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.selProBtn {
+    display: flex;
+}
+
+.selProBtn button {
+    height: 50px !important;
+    width: 80% !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

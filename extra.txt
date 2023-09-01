@@ -1,0 +1,11 @@
+use canActivateChild for condition in routing (1.30 hr)
+api create for product update, add (1 hr)
+Show product and use formModule for validation of update product.
+Create loader and set all place (1 hr)
+
+=============================================================================
+
+loader: any = true;
+<div class="loader spinner-border" role="status" [style.display]="(loader)?'':'none'">
+    <span class="sr-only">Loading...</span>
+</div>

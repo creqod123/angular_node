@@ -15,9 +15,3 @@
 .orderBtn3:hover {
     color: red;
 }
-
-.loader{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}

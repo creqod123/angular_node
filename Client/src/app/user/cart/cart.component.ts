@@ -13,7 +13,8 @@ export class CartComponent {
   productMap = new Map();
   timeOnClick: boolean = false;
   validatingForm: any;
-
+  loader: any = true;
+  modalSH: any;
 
   constructor(private userCart: UserService) {
     this.validatingForm = new FormGroup({
@@ -22,6 +23,7 @@ export class CartComponent {
       ModalPincode: new FormControl('', Validators.required),
       ModalAddress: new FormControl('', Validators.required)
     });
+    this.loader = true;
     this.compressData();
   }
 
@@ -62,6 +64,7 @@ export class CartComponent {
         }
       }
       this.cartData = data;
+      this.loader = false;
     })
   }
 
@@ -70,21 +73,30 @@ export class CartComponent {
   }
 
   addProduct(value: any) {
+    this.loader = true;
     this.userCart.addToCart(value).subscribe(() => {
       this.compressData();
     });
   }
 
   removeProduct(value: any) {
+    this.loader = true;
     this.userCart.removeToCart(value).subscribe(() => {
       this.compressData();
     })
   }
 
   buyProduct() {
-    this.userCart.productBuy(this.cartData, this.validatingForm.value).subscribe(()=>{
-      window.location.reload();
+    this.loader = true;
+    this.userCart.productBuy(this.cartData, this.validatingForm.value).subscribe(() => {
+      this.compressData();
+      this.modalSH.hide();
     })
+  }
+
+  modal(data: any) {
+    this.modalSH = data;
+    this.modalSH.show();
   }
 
 }

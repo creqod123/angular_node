@@ -14,6 +14,7 @@ export class OrderComponent {
   addressId: any;
   validatingForm: any;
   loader: any = true;
+  modalSH: any;
 
   constructor(private orderGet: UserService) {
     this.validatingForm = new FormGroup({
@@ -56,14 +57,16 @@ export class OrderComponent {
   }
 
   oldAddressId(item: any, data: any) {
+    this.modalSH = data;
     this.addressId = item;
-    data.show();
+    this.modalSH.show();
   }
 
   newAddress() {
     this.loader = true;
     this.orderGet.addressEdit({ id: this.addressId, form: this.validatingForm.value }).subscribe(() => {
       this.allOrderProduct();
+      this.modalSH.hide();
     });
   }
 

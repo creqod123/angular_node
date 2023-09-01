@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
-<div class="card-deck">
+
+<!-- ================================= Code ================================= -->
+
+<div class="card-deck" [style.display]="(loader)?'none':''">
     <mdb-card *ngFor="let item of allProduct">
         <div class="view overlay waves-light zoom" mdbWavesEffect>
             <mdb-card-img src="https://mdbootstrap.com/img/Photos/Others/images/3.webp" alt="Card image cap"
@@ -20,10 +23,66 @@
                     STOCK<h5> {{item.stock}}</h5>
                 </div>
             </mdb-card-title>
-            <!-- <div>
-                <button [disabled]="item.stock === 0" mdbBtn color="primary" mdbWavesEffect (click)="addToCart(item)"
-                    style="width: 100%;font-size: 16px;">{{item.stock === 0 ? "Out of stock":"Add to Cart"}}</button>
-            </div> -->
+            <div class="selProBtn">
+                <button mdbBtn color="primary" mdbWavesEffect (click)="modal(basicModal, item)">Update</button>
+                <button mdbBtn color="primary" mdbWavesEffect (click)="Delete()">Delete</button>
+            </div>
         </mdb-card-body>
     </mdb-card>
+</div>
+
+<!-- =================================== Modal for update============================ -->
+
+<div mdbModal #basicModal="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Update Product</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="form34" class="form-control" mdbInput mdbValidate
+                        [formControl]="productName">
+                    <label for="form34">Product name</label>
+                    <mdb-error *ngIf="productName.invalid && (productName.dirty || productName.touched)">
+                        Input
+                        invalid
+                    </mdb-error>
+                </div>
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+                    <input type="number" id="form32" class="form-control" mdbInput mdbValidate [formControl]="price">
+                    <label for="form32">Price</label>
+                    <mdb-error *ngIf="price.invalid && (price.dirty || price.touched)">
+                        Input invalid
+                    </mdb-error>
+                </div>
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+                    <input type="number" id="form32" class="form-control" mdbInput mdbValidate [formControl]="stock">
+                    <label for="form32">Stock</label>
+                    <mdb-error *ngIf="stock.invalid && (stock.dirty || stock.touched)">
+                        Input invalid
+                    </mdb-error>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button mdbBtn color="unique" class="waves-light" (click)="update()" mdbWavesEffect
+                    [disabled]="addressCheck()">Send
+                    <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================== loader =========================== -->
+
+<div class="loader spinner-border" role="status" [style.display]="(loader)?'':'none'">
+    <span class="sr-only">Loading...</span>
 </div>

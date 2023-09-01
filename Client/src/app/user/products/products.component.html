@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
-<div class="card-deck">
+
+<!-- =========================== code =========================== -->
+
+<div class="card-deck" [style.display]="(loader)?'none':''">
     <mdb-card *ngFor="let item of allProduct">
         <div class="view overlay waves-light zoom" mdbWavesEffect>
             <mdb-card-img src="https://mdbootstrap.com/img/Photos/Others/images/3.webp" alt="Card image cap"
@@ -26,4 +29,10 @@
             </div>
         </mdb-card-body>
     </mdb-card>
+</div>
+
+<!-- ============================== loader ============================== -->
+
+<div class="loader spinner-border" role="status" [style.display]="(loader)?'':'none'">
+    <span class="sr-only">Loading...</span>
 </div>

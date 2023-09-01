@@ -24,6 +24,29 @@ exports.getAll = (async (req, res, next) => {
     }
 });
 
+// ============================= Admin update show =========================== 
+
+exports.update = (async (req, res, next) => {
+
+    try {
+        const id = req.body.id;
+        const form = req.body.form;
+
+        const a = await adminProduct.updateOne({ _id: id, adminId: req.user._id }, { productName: form.productName, price: form.price, stock: form.stock })
+        console.log(a)
+        res.status(200).json({
+            success: true,
+            message: "complete",
+        })
+    }
+    catch (error) {
+        res.status(404).json({
+            success: false,
+            message: "fail",
+        })
+    }
+});
+
 // ============================= Admin add product =========================== 
 
 exports.add = (async (req, res, next) => {
@@ -101,26 +124,6 @@ exports.detail = (async (req, res, next) => {
                 data: data,
             })
         }
-    }
-    catch (error) {
-        res.status(404).json({
-            success: false,
-            message: "fail",
-        })
-    }
-});
-
-// ============================= Admin update show =========================== 
-
-exports.update = (async (req, res, next) => {
-
-    try {
-        await adminProduct.updateOne({ _id: req.body.id }, { productName: req.body.productName, price: req.body.price })
-        socket.updateProduct('updateProduct');
-        res.status(200).json({
-            success: true,
-            message: "complete",
-        })
     }
     catch (error) {
         res.status(404).json({

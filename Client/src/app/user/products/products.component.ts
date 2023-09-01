@@ -10,19 +10,28 @@ import { Router } from '@angular/router';
 export class ProductsComponent {
   allProduct: any = [];
   cartError: any;
+  loader: any = true;
 
   constructor(private userData: UserService, private route: Router) {
-    userData.homeProduct().subscribe((data) => {
+    this.getHomeProduct()
+  }
+
+  getHomeProduct() {
+    this.userData.homeProduct().subscribe((data: any) => {
       this.allProduct = data;
       this.allProduct = this.allProduct.data;
+      this.loader = false;
     })
   }
 
   addToCart(data: any) {
+    this.loader = true;
     const userChek = localStorage.getItem('token')
     if (userChek) {
       this.cartError = true;
-      this.userData.addToCart(data).subscribe();
+      this.userData.addToCart(data).subscribe(() => {
+        this.loader = false;
+      });
     }
     else {
       this.route.navigate(['login']);

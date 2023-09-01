@@ -3,7 +3,7 @@
 <!-- ========================================== Modal for address ==================================================== -->
 
 <button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
-    (click)="frame.show()" mdbWavesEffect>Buy Now
+    (click)="modal(frame)" mdbWavesEffect>Buy Now
 </button>
 
 <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
@@ -66,7 +66,7 @@
 
 <!-- ============================================= Product show ================================================= -->
 
-<div class="card-deck">
+<div class="card-deck" [style.display]="(loader)?'none':''">
     <mdb-card *ngFor="let item of cartData">
         <div class="view overlay waves-light zoom" mdbWavesEffect>
             <mdb-card-img src="https://mdbootstrap.com/img/Photos/Others/images/3.webp" alt="Card image cap"
@@ -95,4 +95,10 @@
             </div>
         </mdb-card-body>
     </mdb-card>
+</div>
+
+<!-- ======================= Loader ======================= -->
+
+<div class="loader spinner-border" role="status" [style.display]="(loader)?'':'none'">
+    <span class="sr-only">Loading...</span>
 </div>

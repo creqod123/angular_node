@@ -25,15 +25,17 @@ router.post("/login", loginController.login);             //
 
 //            ============ Admin ============== 
 
-router.get('/seller', verifyToken, adminController.getAll);
-router.post('/seller/add', upload.single('image'), adminController.add);
+router.get('/seller', verifyToken, adminController.getAll); //
+router.post('/seller/update', verifyToken, adminController.update); //
+
+router.post('/seller/add', verifyToken, upload.single('image'), adminController.add);
 router.post('/seller/remove', verifyToken, adminController.remove);
 router.post('/seller/detail', verifyToken, adminController.detail);
-router.post('/seller/update', verifyToken, adminController.update);
 router.post('/seller/order', verifyToken, adminController.order);
 router.post('/seller/status', verifyToken, adminController.status);
 router.post('/seller/search', verifyToken, adminController.search);
 router.post('/seller/stock', verifyToken, adminController.stock);
+// router.post('/seller/add', verifyToken, upload.single('image'), adminController.add);
 
 //            ============ User ============== 
 

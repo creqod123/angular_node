@@ -21,11 +21,16 @@ export class SellerService {
         token: this.userData,
       })
     };
-
-    console.log('first', this.userData);
-    console.log('second', `${this.url}/admin`);
-
     return this.http.get(`${this.url}`, httpOptions);
+  }
+
+  updateProduct(data: any, id: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    return this.http.post(`${this.url}/update`, { id: id, form: data }, httpOptions);
   }
 
 }

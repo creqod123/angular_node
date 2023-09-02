@@ -30,10 +30,7 @@ router.post('/seller/add', verifyToken, adminController.add); //
 router.get('/seller/detail', verifyToken, adminController.detail); //
 router.post('/seller/delete', verifyToken, adminController.delete); //
 
-router.post('/seller/order', verifyToken, adminController.order);
 router.post('/seller/status', verifyToken, adminController.status);
-router.post('/seller/search', verifyToken, adminController.search);
-router.post('/seller/stock', verifyToken, adminController.stock);
 // router.post('/seller/add', verifyToken, upload.single('image'), adminController.add);
 
 //            ============ User ============== 

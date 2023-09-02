@@ -36,7 +36,7 @@ export class NavbarComponent {
     this.checkUser = false;
     localStorage.removeItem('token');
     localStorage.removeItem('type');
-    window.location.href = "http://localhost:4200/login";
+    window.location.href = "/login";
   }
 
   home() {

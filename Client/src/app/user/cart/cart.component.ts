@@ -56,6 +56,7 @@ export class CartComponent {
   compressData() {
     this.userCart.cartDataShow().subscribe((product: any) => {
       const data = product.data.productCart;
+      let swap;
       for (let i = 0; i < data.length; i++) {
         for (let j = i + 1; j < data.length; j++) {
           if (data[i].productId._id === data[j].productId._id) {
@@ -65,6 +66,19 @@ export class CartComponent {
           }
         }
       }
+
+      console.log(data);
+
+      for (let i = 0; i < data.length; i++) {
+        for (let j = i + 1; j < data.length; j++) {
+          if (data[i].productId.productName > data[j].productId.productName) {
+            swap = data[j];
+            data[j] = data[i];
+            data[i] = swap;
+          }
+        }
+      }
+
       this.cartData = data;
       this.loader = false;
     })

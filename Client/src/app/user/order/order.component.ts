@@ -27,8 +27,11 @@ export class OrderComponent {
   }
 
   addressCheck() {
-    if (this.validatingForm.value.ModalName && this.validatingForm.value.ModalEmail && this.validatingForm.value.ModalPincode && this.validatingForm.value.ModalAddress) {
-      return false;
+    const checkLength = this.validatingForm.value.ModalPincode.toString().length;
+    if (this.validatingForm.value.ModalName && this.validatingForm.value.ModalEmail && this.validatingForm.value.ModalAddress) {
+      if (checkLength === 6 && this.validatingForm.value.ModalPincode >= 1) {
+        return false;
+      }
     }
     return true;
   }

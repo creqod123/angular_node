@@ -19,14 +19,14 @@ export class ProductComponent {
     this.validatingForm = new FormGroup({
       productName: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
-      stock: new FormControl(0),
+      stock: new FormControl(0, Validators.required),
     });
     this.productGet();
   }
 
 
   addressCheck() {
-    if (this.validatingForm.value.productName && this.validatingForm.value.price) {
+    if (this.validatingForm.value.productName && this.validatingForm.value.price && this.validatingForm.value.stock >= 0 && this.validatingForm.value.stock !== null) {
       return false;
     }
     return true;

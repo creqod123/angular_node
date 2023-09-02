@@ -15,13 +15,13 @@ export class AddComponent {
     this.validatingForm = new FormGroup({
       productName: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
-      stock: new FormControl(0),
+      stock: new FormControl(0, Validators.required),
     });
   }
 
 
   addressCheck() {
-    if (this.validatingForm.value.productName && this.validatingForm.value.price) {
+    if (this.validatingForm.value.productName && this.validatingForm.value.price >= 0 && this.validatingForm.value.price !== null && this.validatingForm.value.stock >= 0 && this.validatingForm.value.stock !== null) {
       return false;
     }
     return true;

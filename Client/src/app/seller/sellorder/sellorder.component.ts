@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SellerService } from '../../services/seller.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sellorder',
@@ -15,12 +16,16 @@ export class SellorderComponent {
   modalSH: any;
   modalSH2: any;
   allProductShow: any;
+  cookieValue: string;
+
 
   getObjectKey(obj: any) {
     return Object.keys(obj);
   }
-  constructor(private orderGet: SellerService) {
+  constructor(private orderGet: SellerService, private cookieService: CookieService) {
     this.allOrderProduct();
+    this.cookieValue = this.cookieService.get('your_cookie_name');
+    console.log(this.cookieService);
   }
 
   allOrderProduct() {

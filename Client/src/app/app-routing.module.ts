@@ -12,6 +12,7 @@ import { AddComponent } from './seller/add/add.component';
 import { SellorderComponent } from './seller/sellorder/sellorder.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductComponent } from './seller/product/product.component';
+import { SiteDetailComponent } from './admin/site-detail/site-detail.component';
 
 const routes: Routes = [
   {
@@ -28,13 +29,6 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    canActivateChild: [() => {
-      let check = false;
-      if (localStorage.getItem('type') === 'user') {
-        check = true;
-      }
-      return check;
-    }],
     children: [
       {
         path: 'product',
@@ -52,13 +46,6 @@ const routes: Routes = [
   },
   {
     path: 'seller',
-    canActivateChild: [() => {
-      let check = false;
-      if (localStorage.getItem('type') === 'seller') {
-        check = true;
-      }
-      return check;
-    }],
     children: [
       {
         path: 'product',
@@ -75,9 +62,19 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'ceo',
+    children: [
+      {
+        path: 'detail',
+        component: SiteDetailComponent
+      },
+    ],
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   },
+
 ];
 
 @NgModule({

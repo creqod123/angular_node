@@ -10,9 +10,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-import {ReactiveFormsModule} from '@angular/forms'
-import {FormsModule} from '@angular/forms'
-import {HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './user/cart/cart.component';
 import { OrderComponent } from './user/order/order.component';
 import { AddComponent } from './seller/add/add.component';
@@ -20,7 +20,10 @@ import { SellorderComponent } from './seller/sellorder/sellorder.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductComponent } from './seller/product/product.component';
 import { ProductsComponent } from './user/products/products.component';
-import { LoaderComponent } from './loader/loader.component'
+import { LoaderComponent } from './loader/loader.component';
+import { SiteDetailComponent } from './admin/site-detail/site-detail.component';
+import { SellerComponent } from './admin/seller/seller.component';
+import { UserComponent } from './admin/user/user.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { LoaderComponent } from './loader/loader.component'
     ProductComponent,
     ProductsComponent,
     LoaderComponent,
+    SiteDetailComponent,
+    SellerComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

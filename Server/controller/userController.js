@@ -11,6 +11,7 @@ const socket = require('../socket/index');
 
 exports.getAll = (async (req, res, next) => {
     try {
+        console.log('check ',req.user);
         data = await adminProduct.find();
         res.status(200).json({
             success: true,

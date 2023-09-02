@@ -39,6 +39,8 @@ export class NavbarComponent {
     window.location.href = "/login";
   }
 
+  // ============ User ============
+
   home() {
     this.routes.navigate([`${this.userType}/product`]);
   }
@@ -51,6 +53,8 @@ export class NavbarComponent {
     this.routes.navigate(['user/cart']);
   }
 
+  // ============ Seller ============
+
   sellProduct() {
     this.routes.navigate(['seller/product']);
   }
@@ -62,4 +66,8 @@ export class NavbarComponent {
   sellOrder() {
     this.routes.navigate(['seller/sellorder']);
   }
+
+  // ============ Admin ============
+
+
 }

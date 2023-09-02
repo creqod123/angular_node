@@ -1,3 +1,5 @@
+Create custom validation in all form for all components (2 hr)
+Use and try Async pipe and asynchronous Data Handling (3 hr)
 
 
 ========================================== loader ==========================================

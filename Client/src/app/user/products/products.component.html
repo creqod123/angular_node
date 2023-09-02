@@ -32,7 +32,6 @@
 </div>
 
 <!-- ============================== loader ============================== -->
-
-<div class="loader spinner-border" role="status" [style.display]="(loader)?'':'none'">
-    <span class="sr-only">Loading...</span>
+<div [style.display]="(loader)?'':'none'">
+    <app-loader></app-loader>
 </div>

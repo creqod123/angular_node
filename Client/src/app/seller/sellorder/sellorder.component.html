@@ -93,6 +93,6 @@
 
 <!-- ========= Loader ========= -->
 
-<div class="loader spinner-border" role="status" [style.visibility]="(loader)?'visible':'hidden'">
-    <span class="sr-only">Loading...</span>
+<div [style.display]="(loader)?'':'none'">
+    <app-loader></app-loader>
 </div>

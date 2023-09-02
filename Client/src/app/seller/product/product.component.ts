@@ -67,7 +67,7 @@ export class ProductComponent {
   update() {
     if (this.validatingForm.value.stock === null) {
       this.validatingForm.value.stock = 0;
-    } 
+    }
     this.loader = true;
     this.sellservice.updateProduct(this.validatingForm.value, this.productId).subscribe(() => {
       this.modalSH.hide();

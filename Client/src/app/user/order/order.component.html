@@ -28,13 +28,13 @@
                     <th>{{item.quantity}}</th>
                     <th>{{item.status}}</th>
                     <th>
-                        <button type="button" class="orderBtn1"
-                            (click)="oldAddressId(item.addressId._id ,addressEditModal)" mdbWavesEffect>
+                        <button type="button" class="orderBtn1" (click)="oldAddressId(item.addressId ,addressEditModal)"
+                            mdbWavesEffect>
                             <mdb-icon fas icon="edit"></mdb-icon>
                         </button>
                     </th>
                     <th>
-                        <button class="orderBtn2">
+                        <button class="orderBtn2" (click)="oldProduct(item ,productEditModal)">
                             <mdb-icon fas icon="edit"></mdb-icon>
                         </button>
                     </th>
@@ -105,6 +105,48 @@
                         <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== Product edit ======================== -->
+
+<div mdbModal #productEditModal="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Product Detail Update</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="productEditModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="ModalPrice">
+                    <label for="form34">Price</label>
+                    <mdb-error *ngIf="ModalPrice.invalid && (ModalPrice.dirty || ModalPrice.touched)">
+                        Name Invalid
+                    </mdb-error>
+                </div>
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                    <input type="email" id="form29" class="form-control" mdbInput mdbValidate
+                        [formControl]="ModalQuantity" required>
+                    <label for="form29">Quantity</label>
+                    <mdb-error *ngIf="ModalQuantity.invalid && (ModalQuantity.dirty || ModalQuantity.touched)">
+                        Email invalid
+                    </mdb-error>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button mdbBtn color="unique" class="waves-light" mdbWavesEffect (click)="newProduct()"
+                    [disabled]="productCheck()">Send
+                    <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+                </button>
             </div>
         </div>
     </div>

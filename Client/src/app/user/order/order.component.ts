@@ -14,18 +14,38 @@ export class OrderComponent {
   headElements = ['NO', 'Product Name', 'Price', 'Quantity', 'Status', 'Address', 'Edit', 'Delete'];
   addressId: any;
   validatingForm: any;
+  validatingProduct: any;
   modalSH: any;
 
   constructor(private orderGet: UserService, private spinner: NgxSpinnerService) {
     this.spinner.show();
+
+    // ==== address
+
     this.validatingForm = new FormGroup({
       ModalName: new FormControl('', Validators.required),
       ModalEmail: new FormControl('', Validators.email),
       ModalPincode: new FormControl('', Validators.required),
       ModalAddress: new FormControl('', Validators.required)
     });
+
+    // ==== product update
+
+    this.validatingProduct = new FormGroup({
+      ModalPrice: new FormControl('', Validators.required),
+      ModalQuantity: new FormControl('', Validators.required),
+    });
     this.allOrderProduct();
   }
+
+  allOrderProduct() {
+    this.orderGet.buyOrderGet().subscribe((product: any) => {
+      this.buyOrderProduct = product.data;
+      this.spinner.hide();
+    })
+  }
+
+  // ================= addresss update =================
 
   addressCheck() {
     const checkLength = this.validatingForm.value.ModalPincode.toString().length;
@@ -53,16 +73,15 @@ export class OrderComponent {
     return this.validatingForm.get('ModalAddress');
   }
 
-  allOrderProduct() {
-    this.orderGet.buyOrderGet().subscribe((product: any) => {
-      this.buyOrderProduct = product.data;
-      this.spinner.hide();
-    })
-  }
-
   oldAddressId(item: any, data: any) {
+    this.validatingForm.patchValue({
+      ModalName: item.fullName,
+      ModalEmail: item.email,
+      ModalPincode: item.pincode,
+      ModalAddress: item.address
+    });
     this.modalSH = data;
-    this.addressId = item;
+    this.addressId = item._id;
     this.modalSH.show();
   }
 
@@ -72,6 +91,35 @@ export class OrderComponent {
       this.allOrderProduct();
       this.modalSH.hide();
     });
+  }
+
+  // ========== Quantity update =============
+
+  get ModalQuantity() {
+    return this.validatingProduct.get('ModalQuantity');
+  }
+
+  get ModalPrice() {
+    return this.validatingProduct.get('ModalPrice');
+  }
+
+  productCheck() {
+    console.log('check :- ', this.validatingProduct.value)
+    if (this.validatingProduct.value.ModalPrice >= 1 && this.validatingProduct.value.ModalQuantity >= 1) {
+      return false;
+    }
+    return true;
+  }
+
+  oldProduct(item: any, data: any) {
+    console.log(item)
+    this.modalSH = data;
+    this.addressId = item._id;
+    this.modalSH.show();
+  }
+
+  newProduct() {
+    console.log('check')
   }
 
   delete(data: any) {

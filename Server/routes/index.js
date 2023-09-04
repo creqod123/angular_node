@@ -21,21 +21,11 @@ router.get('/', async function (req, res, next) {
 router.post("/register", registerController.register);    //
 router.post("/login", loginController.login);             //
 
-//            ============ Admin ============== 
 
-router.get('/seller', verifyToken, adminController.getAll); //
-router.post('/seller/update', verifyToken, adminController.update); //
-router.post('/seller/remove', verifyToken, adminController.remove);
-router.post('/seller/add', verifyToken, adminController.add); //
-router.get('/seller/detail', verifyToken, adminController.detail); //
-router.post('/seller/delete', verifyToken, adminController.delete); //
-
-// router.post('/seller/status', verifyToken, adminController.status);
-// router.post('/seller/add', verifyToken, upload.single('image'), adminController.add);
 
 //            ============ User ============== 
 
-router.get('/user', userController.getAll)      //
+router.get('/user', verifyToken, userController.getAll)      //
 router.get('/user/cart', verifyToken, userController.userCart)    //
 router.post('/user/cartSaved', verifyToken, userController.cart);   //
 router.post('/user/cartRemove', verifyToken, userController.removeCart);   //
@@ -44,12 +34,23 @@ router.get('/user/order', verifyToken, userController.order); //
 router.post('/user/orderupdate', verifyToken, userController.addressUpdate); //
 router.post('/user/orderDelete', verifyToken, userController.delete); //
 
-//            ============ Controller by admin ============== 
+
+//            ============ Seller ============== 
+
+router.get('/seller', verifyToken, adminController.getAll); //
+router.post('/seller/update', verifyToken, adminController.update); //
+router.post('/seller/remove', verifyToken, adminController.remove);
+router.post('/seller/add', verifyToken, adminController.add); //
+router.get('/seller/detail', verifyToken, adminController.detail); //
+router.post('/seller/delete', verifyToken, adminController.delete); //
+// router.post('/seller/add', verifyToken, upload.single('image'), adminController.add);
+
+
+//            ============ admin ============== 
 
 router.get('/ceo', verifyToken, ceoController.getData)
 router.post('/ceo/user/detail', verifyToken, ceoController.userDetail)
 router.post('/ceo/user/delete', verifyToken, ceoController.userDelete)
-
 router.post('/ceo/admin/detail', verifyToken, ceoController.adminDetail)
 router.post('/ceo/admin/productremove', verifyToken, ceoController.productRemove)
 router.post('/ceo/search', verifyToken, ceoController.searchData)

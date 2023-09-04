@@ -17,7 +17,12 @@ export class UserService {
   }
 
   homeProduct() {
-    return this.http.get(this.url);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    return this.http.get(this.url, httpOptions);
   }
 
   cartDataShow() {

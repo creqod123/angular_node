@@ -2,7 +2,7 @@
 
 <!-- ================================= Code ================================= -->
 
-<div class="card-deck" [style.display]="(loader)?'none':''">
+<div class="card-deck">
     <mdb-card *ngFor="let item of allProduct">
         <div class="view overlay waves-light zoom" mdbWavesEffect>
             <mdb-card-img src="https://mdbootstrap.com/img/Photos/Others/images/3.webp" alt="Card image cap"
@@ -105,8 +105,6 @@
     </div>
 </div>
 
-<!-- =========================== loader =========================== -->
+<!-- ====================== loader ====================== -->
 
-<div [style.display]="(loader)?'':'none'">
-    <app-loader></app-loader>
-</div>
+<ngx-spinner type="ball-scale-multiple" [style.color]="'white'">Loading...</ngx-spinner>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service'
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-cart',
@@ -13,17 +14,16 @@ export class CartComponent {
   productMap = new Map();
   timeOnClick: boolean = false;
   validatingForm: any;
-  loader: any = true;
   modalSH: any;
 
-  constructor(private userCart: UserService) {
+  constructor(private userCart: UserService, private spinner: NgxSpinnerService) {
+    this.spinner.show();
     this.validatingForm = new FormGroup({
       ModalName: new FormControl('', Validators.required),
       ModalEmail: new FormControl('', Validators.email),
       ModalPincode: new FormControl('', Validators.required),
       ModalAddress: new FormControl('', Validators.required)
     });
-    this.loader = true;
     this.compressData();
   }
 
@@ -80,7 +80,7 @@ export class CartComponent {
       }
 
       this.cartData = data;
-      this.loader = false;
+      this.spinner.hide();
     })
   }
 
@@ -89,21 +89,21 @@ export class CartComponent {
   }
 
   addProduct(value: any) {
-    this.loader = true;
+    this.spinner.show();
     this.userCart.addToCart(value).subscribe(() => {
       this.compressData();
     });
   }
 
   removeProduct(value: any) {
-    this.loader = true;
+    this.spinner.show();
     this.userCart.removeToCart(value).subscribe(() => {
       this.compressData();
     })
   }
 
   buyProduct() {
-    this.loader = true;
+    this.spinner.show();
     this.userCart.productBuy(this.cartData, this.validatingForm.value).subscribe(() => {
       this.compressData();
       this.modalSH.hide();

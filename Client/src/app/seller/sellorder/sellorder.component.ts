@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SellerService } from '../../services/seller.service';
 import { CookieService } from 'ngx-cookie-service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-sellorder',
@@ -12,7 +13,6 @@ export class SellorderComponent {
   headElements = ['NO', 'User Name', 'Product Detail', 'Delete',];
   headElements2 = ['#', 'Product name', 'Price', 'Quantity', 'Status', 'Address', 'Pincode', 'Remove'];
   addressId: any;
-  loader: any = true;
   modalSH: any;
   modalSH2: any;
   allProductShow: any;
@@ -22,10 +22,9 @@ export class SellorderComponent {
   getObjectKey(obj: any) {
     return Object.keys(obj);
   }
-  constructor(private orderGet: SellerService, private cookieService: CookieService) {
+  constructor(private orderGet: SellerService, private cookieService: CookieService, private spinner: NgxSpinnerService) {
+    this.spinner.show();
     this.allOrderProduct();
-    this.cookieValue = this.cookieService.get('your_cookie_name');
-    console.log(this.cookieService);
   }
 
   allOrderProduct() {
@@ -59,7 +58,7 @@ export class SellorderComponent {
         entry[name] = matchingItems;
         this.buyOrderProduct.push(entry);
       }
-      this.loader = false;
+      this.spinner.hide();
     })
   }
 
@@ -70,7 +69,7 @@ export class SellorderComponent {
   }
 
   singleProduct(data: any, option: any) {
-    this.loader = true;
+    this.spinner.show();
     this.orderGet.productDel(data, option).subscribe(() => {
       this.modalSH2.hide();
       this.allOrderProduct();

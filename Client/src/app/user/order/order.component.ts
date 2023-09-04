@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-order',
@@ -13,10 +14,10 @@ export class OrderComponent {
   headElements = ['NO', 'Product Name', 'Price', 'Quantity', 'Status', 'Address', 'Edit', 'Delete'];
   addressId: any;
   validatingForm: any;
-  loader: any = true;
   modalSH: any;
 
-  constructor(private orderGet: UserService) {
+  constructor(private orderGet: UserService, private spinner: NgxSpinnerService) {
+    this.spinner.show();
     this.validatingForm = new FormGroup({
       ModalName: new FormControl('', Validators.required),
       ModalEmail: new FormControl('', Validators.email),
@@ -55,7 +56,7 @@ export class OrderComponent {
   allOrderProduct() {
     this.orderGet.buyOrderGet().subscribe((product: any) => {
       this.buyOrderProduct = product.data;
-      this.loader = false;
+      this.spinner.hide();
     })
   }
 
@@ -66,7 +67,7 @@ export class OrderComponent {
   }
 
   newAddress() {
-    this.loader = true;
+    this.spinner.show();
     this.orderGet.addressEdit({ id: this.addressId, form: this.validatingForm.value }).subscribe(() => {
       this.allOrderProduct();
       this.modalSH.hide();
@@ -74,7 +75,7 @@ export class OrderComponent {
   }
 
   delete(data: any) {
-    this.loader = true;
+    this.spinner.show();
     this.orderGet.orderDelete(data).subscribe(() => {
       this.allOrderProduct();
     });

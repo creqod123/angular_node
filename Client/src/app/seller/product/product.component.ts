@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SellerService } from '../../services/seller.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-product',
@@ -13,9 +14,9 @@ export class ProductComponent {
   validatingForm: any;
   productId: any;
   modalSH: any;
-  loader: any = true;
 
-  constructor(private sellservice: SellerService) {
+  constructor(private sellservice: SellerService, private spinner: NgxSpinnerService) {
+    this.spinner.show();
     this.validatingForm = new FormGroup({
       productName: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
@@ -49,7 +50,7 @@ export class ProductComponent {
       if (product.message === 'complete') {
         this.allProduct = product.data;
       }
-      this.loader = false;
+      this.spinner.hide();
     })
   }
 
@@ -65,10 +66,10 @@ export class ProductComponent {
   }
 
   update() {
+    this.spinner.show();
     if (this.validatingForm.value.stock === null) {
       this.validatingForm.value.stock = 0;
     }
-    this.loader = true;
     this.sellservice.updateProduct(this.validatingForm.value, this.productId).subscribe(() => {
       this.modalSH.hide();
       this.productGet();
@@ -82,7 +83,7 @@ export class ProductComponent {
   }
 
   productDelete() {
-    this.loader = true;
+    this.spinner.show();
     this.modalSH.hide();
     this.sellservice.deleteProduct(this.productId).subscribe(() => {
       this.productGet();

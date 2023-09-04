@@ -2,7 +2,7 @@
 
 <!-- ============================= code ============================= -->
 
-<div [style.visibility]="(loader)?'hidden':'visible'">
+<div>
     <div class="container">
         <div class="row">
             <div class="col-md-12 mx-auto">
@@ -90,9 +90,6 @@
     </div>
 </div>
 
+<!-- ====================== loader ====================== -->
 
-<!-- ========= Loader ========= -->
-
-<div [style.display]="(loader)?'':'none'">
-    <app-loader></app-loader>
-</div>
+<ngx-spinner type="ball-scale-multiple" [style.color]="'white'">Loading...</ngx-spinner>

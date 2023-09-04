@@ -33,7 +33,7 @@
               "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
               "node_modules/animate.css/animate.css",
               "src/styles.scss",
-              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css" 
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",

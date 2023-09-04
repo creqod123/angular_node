@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service'
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-products',
@@ -10,9 +11,9 @@ import { Router } from '@angular/router';
 export class ProductsComponent {
   allProduct: any = [];
   cartError: any;
-  loader: any = true;
 
-  constructor(private userData: UserService, private route: Router) {
+  constructor(private userData: UserService, private route: Router, private spinner: NgxSpinnerService) {
+    this.spinner.show();
     this.getHomeProduct()
   }
 
@@ -20,17 +21,17 @@ export class ProductsComponent {
     this.userData.homeProduct().subscribe((data: any) => {
       this.allProduct = data;
       this.allProduct = this.allProduct.data;
-      this.loader = false;
+      this.spinner.hide();
     })
   }
 
   addToCart(data: any) {
-    this.loader = true;
+    this.spinner.show();
     const userChek = localStorage.getItem('token')
     if (userChek) {
       this.cartError = true;
       this.userData.addToCart(data).subscribe(() => {
-        this.loader = false;
+        this.spinner.hide();
       });
     }
     else {

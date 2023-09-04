@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,10 +23,13 @@ import { SellorderComponent } from './seller/sellorder/sellorder.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductComponent } from './seller/product/product.component';
 import { ProductsComponent } from './user/products/products.component';
-import { LoaderComponent } from './loader/loader.component';
 import { SellerComponent } from './admin/seller/seller.component';
 import { UserComponent } from './admin/user/user.component';
 import { SitedetailComponent } from './admin/sitedetail/sitedetail.component';
+
+interface NgxSpinnerConfig {
+  type?: string;
+}
 
 @NgModule({
   declarations: [
@@ -39,7 +45,6 @@ import { SitedetailComponent } from './admin/sitedetail/sitedetail.component';
     PageNotFoundComponent,
     ProductComponent,
     ProductsComponent,
-    LoaderComponent,
     SellerComponent,
     UserComponent,
     SitedetailComponent,
@@ -50,9 +55,12 @@ import { SitedetailComponent } from './admin/sitedetail/sitedetail.component';
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

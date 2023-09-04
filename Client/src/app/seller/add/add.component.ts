@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SellerService } from '../../services/seller.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-add',
@@ -9,9 +10,8 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 })
 export class AddComponent {
   validatingForm: any;
-  loader: any = false;
 
-  constructor(private sellservice: SellerService) {
+  constructor(private sellservice: SellerService, private spinner: NgxSpinnerService) {
     this.validatingForm = new FormGroup({
       productName: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
@@ -40,12 +40,12 @@ export class AddComponent {
   }
 
   add() {
-    this.loader = true;
+    this.spinner.show();
     if (this.validatingForm.value.stock === null) {
       this.validatingForm.value.stock = 0;
     }
     this.sellservice.addProduct(this.validatingForm.value).subscribe(() => {
-      this.loader = false;
+      this.spinner.hide();
     })
   }
 

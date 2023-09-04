@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div [style.display]="(loader)?'none':''" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -43,7 +43,6 @@
     </div>
 </div>
 
-<!-- ================================ loader ================================ -->
-<div [style.display]="(loader)?'':'none'">
-    <app-loader></app-loader>
-</div>
+<!-- ====================== loader ====================== -->
+
+<ngx-spinner type="ball-scale-multiple" [style.color]="'white'">Loading...</ngx-spinner>

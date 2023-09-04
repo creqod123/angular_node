@@ -21,9 +21,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProductComponent } from './seller/product/product.component';
 import { ProductsComponent } from './user/products/products.component';
 import { LoaderComponent } from './loader/loader.component';
-import { SiteDetailComponent } from './admin/site-detail/site-detail.component';
 import { SellerComponent } from './admin/seller/seller.component';
 import { UserComponent } from './admin/user/user.component';
+import { SitedetailComponent } from './admin/sitedetail/sitedetail.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +40,9 @@ import { UserComponent } from './admin/user/user.component';
     ProductComponent,
     ProductsComponent,
     LoaderComponent,
-    SiteDetailComponent,
     SellerComponent,
     UserComponent,
+    SitedetailComponent,
   ],
   imports: [
     BrowserModule,

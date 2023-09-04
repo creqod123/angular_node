@@ -1,6 +1,7 @@
 Create custom validation in all form for all components (2 hr)
 Use and try Async pipe and asynchronous Data Handling (3 hr)
-
+Learn and try as example, Higher-Observable and Rjx (2 hr) 
+Create admin roll and navbar for admin and Api (30 mint)
 
 ========================================== loader ==========================================
 

@@ -12,7 +12,8 @@ import { AddComponent } from './seller/add/add.component';
 import { SellorderComponent } from './seller/sellorder/sellorder.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductComponent } from './seller/product/product.component';
-import { SiteDetailComponent } from './admin/site-detail/site-detail.component';
+
+import { SitedetailComponent } from './admin/sitedetail/sitedetail.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,7 @@ const routes: Routes = [
     children: [
       {
         path: 'detail',
-        component: SiteDetailComponent
+        component: SitedetailComponent
       },
     ],
   },

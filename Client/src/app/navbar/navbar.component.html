@@ -96,21 +96,10 @@
 <!-- ==================== when type is Admin ==================== -->
 
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false"
-    [style.display]="userType === 'seller' ? '' : 'none' ">
-    <mdb-navbar-brand><a class="navbar-brand" href="seller/add">Navbar</a></mdb-navbar-brand>
+    [style.display]="userType === 'ceo' ? '' : 'none' ">
+    <mdb-navbar-brand><a class="navbar-brand" href="ceo/detail">Navbar</a></mdb-navbar-brand>
     <links>
         <ul class="navbar-nav ml-auto nav-flex-icons icon">
-            <li class="nav-item">
-                <a class="nav-link waves-light" (click)="sellProduct()" mdbWavesEffect>Product</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link waves-light" (click)="add()" mdbWavesEffect>Add</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">
-                    <a (click)="sellOrder()">order</a>
-                </a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" style="background: none; border: none;">
                     <div class="btn-group" mdbDropdown>

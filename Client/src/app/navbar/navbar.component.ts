@@ -66,8 +66,4 @@ export class NavbarComponent {
   sellOrder() {
     this.routes.navigate(['seller/sellorder']);
   }
-
-  // ============ Admin ============
-
-
 }

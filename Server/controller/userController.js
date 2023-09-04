@@ -168,13 +168,33 @@ exports.order = (async (req, res, next) => {
     }
 });
 
-// ============================= user order update =========================== 
+// ============================= user address update =========================== 
 
 exports.addressUpdate = (async (req, res, next) => {
     try {
         const id = req.user._id;
         const form = req.body.form;
         const a = await address.updateOne({ userId: id }, { fullName: form.ModalName, email: form.ModalEmail, pincode: form.ModalPincode, address: form.ModalAddress });
+        res.status(200).json({
+            success: true,
+            message: "complete",
+        })
+    }
+    catch (error) {
+        res.status(404).json({
+            success: false,
+            message: "fail",
+        })
+    }
+});
+
+// ============================= user Product update =========================== 
+
+exports.productUpdate = (async (req, res, next) => {
+    try {
+        const productId = req.body.id;
+        const form = req.body.form;
+        await checkout.updateOne({ _id: productId }, { price: form.ModalPrice, quantity: form.ModalQuantity });
         res.status(200).json({
             success: true,
             message: "complete",

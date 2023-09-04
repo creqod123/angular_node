@@ -7,7 +7,6 @@ const register = new Schema({
         unique: true
     },
     password: String,
-    tel: Number,
     type: String
 })
 

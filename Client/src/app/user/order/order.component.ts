@@ -13,6 +13,7 @@ export class OrderComponent {
   buyOrderProduct: any = [];
   headElements = ['NO', 'Product Name', 'Price', 'Quantity', 'Status', 'Address', 'Edit', 'Delete'];
   addressId: any;
+  productId: any;
   validatingForm: any;
   validatingProduct: any;
   modalSH: any;
@@ -104,7 +105,6 @@ export class OrderComponent {
   }
 
   productCheck() {
-    console.log('check :- ', this.validatingProduct.value)
     if (this.validatingProduct.value.ModalPrice >= 1 && this.validatingProduct.value.ModalQuantity >= 1) {
       return false;
     }
@@ -112,14 +112,21 @@ export class OrderComponent {
   }
 
   oldProduct(item: any, data: any) {
-    console.log(item)
+    this.validatingProduct.patchValue({
+      ModalPrice: item.price,
+      ModalQuantity: item.quantity,
+    });
     this.modalSH = data;
-    this.addressId = item._id;
+    this.productId = item._id;
     this.modalSH.show();
   }
 
   newProduct() {
-    console.log('check')
+    this.spinner.show();
+    this.orderGet.productEdit(this.validatingProduct.value, this.productId).subscribe(() => {
+      this.modalSH.hide();
+      this.allOrderProduct();
+    })
   }
 
   delete(data: any) {

@@ -9,7 +9,8 @@ import { environment } from '../../../../Client/environment';
 export class UserService {
 
   userLoginCheck: any = false;
-  url = `${environment.apiUrl}:${environment.port}/user`;
+  // url = `${environment.apiUrl}:${environment.port}/user`;
+  url = `${environment.apiUrl}/user`;
   userData: any;
 
   constructor(private http: HttpClient) {
@@ -76,7 +77,18 @@ export class UserService {
         token: this.userData,
       })
     };
-    return this.http.post(`${this.url}/orderupdate`, data, httpOptions);
+    return this.http.post(`${this.url}/addressUpdate`, data, httpOptions);
+  }
+
+  productEdit(data: any, id: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: this.userData,
+      })
+    };
+    data = { id: id, form: data };
+    console.log(data);
+    return this.http.post(`${this.url}/productUpdate`, data, httpOptions);
   }
 
   orderDelete(data: any) {

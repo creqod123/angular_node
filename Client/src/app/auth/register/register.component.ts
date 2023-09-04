@@ -16,7 +16,13 @@ export class RegisterComponent {
       if (data.message === 'complete') {
         localStorage.setItem('type', data.type);
         localStorage.setItem('token', data.token);
-        window.location.href = `${data.type}`;
+        if (data.type === 'ceo') {
+          window.location.href = `${data.type}/detail`;
+        }
+        else {
+          console.log('asdasdasd ',data)
+          window.location.href = `${data.type}/product`;
+        }
       }
       else {
         console.log("errorMessage", data.message);

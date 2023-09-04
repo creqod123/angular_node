@@ -15,7 +15,9 @@ export class AuthService {
     const data = localStorage.getItem('type');
     this.types.next(data);
   }
-  url = `${environment.apiUrl}:${environment.port}`;
+
+  // url = `${environment.apiUrl}:${environment.port}`;
+  url = `${environment.apiUrl}`;
 
 
   authLogin(data: any) {

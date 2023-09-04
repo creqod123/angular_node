@@ -8,7 +8,8 @@ import { environment } from '../../../../Client/environment';
 })
 export class SellerService {
 
-  url = `${environment.apiUrl}:${environment.port}/seller`;
+  // url = `${environment.apiUrl}:${environment.port}/seller`;
+  url = `${environment.apiUrl}/seller`;
   userData: any;
 
   constructor(private http: HttpClient) {

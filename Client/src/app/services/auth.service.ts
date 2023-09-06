@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../Client/environment';
+import { environment } from 'environment';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -16,8 +16,8 @@ export class AuthService {
     this.types.next(data);
   }
 
-  // url = `${environment.apiUrl}:${environment.port}`;
-  url = `${environment.apiUrl}`;
+  url = `${environment.apiUrl}:${environment.port}`;
+  // url = `${environment.apiUrl}`;
 
 
   authLogin(data: any) {

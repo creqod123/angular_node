@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../../Client/environment';
+import { environment } from 'environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SellerService {
 
-  // url = `${environment.apiUrl}:${environment.port}/seller`;
-  url = `${environment.apiUrl}/seller`;
+  url = `${environment.apiUrl}:${environment.port}/seller`;
+  // url = `${environment.apiUrl}/seller`;
   userData: any;
 
   constructor(private http: HttpClient) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../../Client/environment';
+import { environment } from 'environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,8 @@ import { environment } from '../../../../Client/environment';
 export class UserService {
 
   userLoginCheck: any = false;
-  // url = `${environment.apiUrl}:${environment.port}/user`;
-  url = `${environment.apiUrl}/user`;
+  url = `${environment.apiUrl}:${environment.port}/user`;
+  // url = `${environment.apiUrl}/user`;
   userData: any;
 
   constructor(private http: HttpClient) {

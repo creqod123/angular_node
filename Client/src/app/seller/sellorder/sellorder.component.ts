@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SellerService } from '../../services/seller.service';
+import { SellerService } from 'src/app/services/seller.service';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxSpinnerService } from "ngx-spinner";
 

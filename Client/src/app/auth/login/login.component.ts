@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +19,7 @@ export class LoginComponent {
         localStorage.setItem('type', data.type);
         if (data.type === 'ceo') {
           window.location.href = `${data.type}/detail`;
+          
         }
         else {
           window.location.href = `${data.type}/product`;

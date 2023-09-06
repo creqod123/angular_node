@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SellerService } from '../../services/seller.service';
+import { SellerService } from 'src/app/services/seller.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from "ngx-spinner";
 

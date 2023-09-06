@@ -1,5 +1,7 @@
 Redux learn and try, as simple add to cart in angular (3 hr)
 Upload project on live client and server side in ngrok and pagekite (2 hr)
+Understanding service provider, useClass,useValue, useFactory and useExisting (30 mint)
+try example in Higher-observale, concatAll, switchMap, exhaustMap (2.30 hr)  
 
 
 ========================================== loader ==========================================

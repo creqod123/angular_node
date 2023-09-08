@@ -50,7 +50,7 @@ export class UserService {
         token: this.userData,
       })
     };
-    return this.http.post(`${this.url}/cartRemove`, { id: data }, httpOptions);
+    return this.http.delete(`${this.url}/cartRemove?id=${data}`, httpOptions);
   }
 
   productBuy(data: any, address: any) {
@@ -97,8 +97,7 @@ export class UserService {
         token: this.userData,
       })
     };
-    data = { id: data };
-    return this.http.post(`${this.url}/orderDelete`, data, httpOptions);
+    return this.http.delete(`${this.url}/orderDelete?id=${data}`, httpOptions);
   }
 
-}
+} 

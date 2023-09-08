@@ -82,9 +82,10 @@ exports.cart = (async (req, res, next) => {
 
 exports.removeCart = (async (req, res, next) => {
     try {
+        const id = req.query.id;
         const data = await cart.findOne({ userId: req.user._id });
         data.productCart.map((item, i = 0) => {
-            if (item._id == req.body.id) {
+            if (item._id == id) {
                 data.productCart.splice(i, 1)
             }
         });
@@ -213,14 +214,17 @@ exports.productUpdate = (async (req, res, next) => {
 
 exports.delete = (async (req, res, next) => {
     try {
+        console.log(req.query);
+        const id = req.query.id;
+
         const addressCheck = await address.findOne({ userId: req.user._id });
         const data = await checkout.find({ addressId: addressCheck._id });
 
         if (data.length != 1) {
-            await checkout.deleteOne({ userId: req.user._id, _id: req.body.id });
+            await checkout.deleteOne({ userId: req.user._id, _id: id });
         }
         else {
-            await checkout.deleteOne({ userId: req.user._id, _id: req.body.id });
+            await checkout.deleteOne({ userId: req.user._id, _id: id });
             await address.deleteOne({ _id: addressCheck._id });
         }
 

@@ -28,12 +28,12 @@ router.post("/login", loginController.login);             //
 router.get('/user', verifyToken, userController.getAll)      //
 router.get('/user/cart', verifyToken, userController.userCart)    //
 router.post('/user/cartSaved', verifyToken, userController.cart);   //
-router.post('/user/cartRemove', verifyToken, userController.removeCart);   //
+router.delete('/user/cartRemove', verifyToken, userController.removeCart);   //
 router.post('/user/checkout', verifyToken, userController.checkout) //
 router.get('/user/order', verifyToken, userController.order); //
 router.post('/user/addressUpdate', verifyToken, userController.addressUpdate); //
 router.post('/user/productUpdate', verifyToken, userController.productUpdate); //
-router.post('/user/orderDelete', verifyToken, userController.delete); //
+router.delete('/user/orderDelete', verifyToken, userController.delete); //
 
 
 //            ============ Seller ============== 

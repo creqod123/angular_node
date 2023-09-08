@@ -1,10 +1,5 @@
-const mongoose = require('mongoose')
 const adminProduct = require('../models/adminProduct')
-const register = require('../models/register')
 const checkout = require('../models/checkout');
-const address = require('../models/address');
-const socket = require('../socket/index');
-let emailDetail
 
 // ============================= Admin get product =========================== 
 

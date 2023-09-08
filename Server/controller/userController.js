@@ -1,16 +1,14 @@
-const mongoose = require('mongoose');
-const con = require('../connection/mysql');
 const adminProduct = require('../models/adminProduct');
 const checkout = require('../models/checkout');
-const register = require('../models/register');
 const address = require('../models/address');
 const cart = require('../models/cart');
-const socket = require('../socket/index');
+const socket = require('../socket/index')
 
 // ============================= getall data show =========================== 
 
 exports.getAll = (async (req, res, next) => {
     try {
+        socket.getAllProdcut('helloworld123', 'Hello world');
         if (req.user.type === 'user') {
             data = await adminProduct.find();
             res.status(200).json({

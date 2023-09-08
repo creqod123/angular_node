@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-products',
@@ -12,9 +13,12 @@ export class ProductsComponent {
   allProduct: any = [];
   cartError: any;
 
-  constructor(private userData: UserService, private route: Router, private spinner: NgxSpinnerService) {
+  constructor(private userData: UserService, private route: Router, private spinner: NgxSpinnerService, private socketService: SocketService) {
     this.spinner.show();
-    this.getHomeProduct()
+    this.getHomeProduct();
+    this.socketService.onMessage().subscribe((message) => {
+      console.log('Received message:', message);
+    });
   }
 
   getHomeProduct() {

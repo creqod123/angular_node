@@ -87,7 +87,6 @@ export class UserService {
       })
     };
     data = { id: id, form: data };
-    console.log(data);
     return this.http.post(`${this.url}/productUpdate`, data, httpOptions);
   }
 

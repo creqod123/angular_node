@@ -20,7 +20,6 @@ export class RegisterComponent {
           window.location.href = `${data.type}/detail`;
         }
         else {
-          console.log('asdasdasd ',data)
           window.location.href = `${data.type}/product`;
         }
       }

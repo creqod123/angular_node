@@ -8,7 +8,7 @@ exports.getData = (async (req, res, next) => {
     try {
         const user = await register.find({ type: "user" }, { _id: 1, email: 1, tel: 1, type: 1 })
         const seller = await register.find({ type: "seller" })
-        socket.ceoUserGet('ceoUserData', [user, seller]);
+        // socket.ceoUserGet('ceoUserData', [user, seller]);
         res.status(200).json({
             message: "complete",
             data: { user: user, seller: seller }

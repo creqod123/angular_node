@@ -1,40 +1,27 @@
-const mapData = (data, message = '') => {
+let socketId;
+const mapData = (data) => {
     return {
         success: true,
         code: 200,
-        message,
+        message: 'Thank you for connected',
         data,
         error: null
     }
 }
 
-exports.init = () => {
-    global.io.on('connection', (socket) => {
-        console.log('user connected - ' + socket.id)
-    })
+exports.init = (io) => {
+    socketId = io
+    io.on('connection', (socket) => {
+        socket.on('join', (roomId) => {
+            socket.join(roomId);
+        });
+        socket.on('helloworld123', (data) => {
+            io.emit('helloworld123', data);
+        });
+    });
 }
-
-// CEO data
-exports.ceoUserGet = (event, data) => {
-    global.io.emit(event, mapData(data))
-}
-
-// admin to user data
-
-exports.addProduct = (event, data) => {
-    global.io.emit(event, mapData(data))
-}
-exports.updateProduct = (event, data) => {
-    global.io.emit(event, mapData(data))
-}
-exports.removeProduct = (event, data) => {
-    global.io.emit(event, mapData(data))
-}
-exports.conformOrder = (event, data) => {
-    global.io.emit(event, mapData(data))
-}
-exports.productCheckout = (event, data) => {
-    global.io.emit(event, mapData(data))
+exports.getAllProdcut = (event, data) => {
+    socketId.emit(event, mapData(data))
 }
 
 // exports.emitToSocketId = (socketId, eventName, data) => {

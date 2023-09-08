@@ -14,7 +14,7 @@ var port = normalizePort(process.env.SOCKET_PORT); //server port
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL,  // Client url and port
+    origin: "http://localhost:4200",  // Client url and port
   }
 })
 

@@ -10,16 +10,15 @@ export class SocketService {
   private socket: any;
 
   constructor() {
-    this.socket = io(environment.serverUrl); // Make sure this is the correct URL for your server
+    this.socket = io(`${environment.apiUrl}:${environment.port}`); // Make sure this is the correct URL for your server
   }
 
   onMessage() {
     return new Observable((observer) => {
-      this.socket.on('helloworld123', (data: any) => {
-        console.log('check123')
+      this.socket.on('getAll', (data: any) => {
         observer.next(data);
       });
     });
   }
-  
+
 }

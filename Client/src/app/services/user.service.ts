@@ -9,8 +9,8 @@ import { environment } from 'environment';
 export class UserService {
 
   userLoginCheck: any = false;
-  url = `${environment.apiUrl}:${environment.port}/user`;
-  // url = `${environment.apiUrl}/user`;
+  // url = `${environment.apiUrl}:${environment.port}/user`;
+  url = `${environment.apiUrl}/user`;
   userData: any;
 
   constructor(private http: HttpClient) {

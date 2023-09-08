@@ -8,9 +8,9 @@ const socket = require('../socket/index')
 
 exports.getAll = (async (req, res, next) => {
     try {
-        socket.getAllProdcut('helloworld123', 'Hello world');
         if (req.user.type === 'user') {
             data = await adminProduct.find();
+            socket.getAllProdcut('getAll', data);
             res.status(200).json({
                 success: true,
                 message: "complete",

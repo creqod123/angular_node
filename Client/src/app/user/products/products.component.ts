@@ -16,7 +16,7 @@ export class ProductsComponent {
   constructor(private userData: UserService, private route: Router, private spinner: NgxSpinnerService, private socketService: SocketService) {
     this.spinner.show();
     this.getHomeProduct();
-    this.socketService.onMessage().subscribe((message) => {
+    this.socketService.onMessage().subscribe((message: any) => {
       console.log('Received message:', message);
     });
   }

@@ -125,20 +125,12 @@
             </div>
             <div class="modal-body mx-3">
                 <div class="md-form mb-5">
-                    <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-                    <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="ModalPrice">
-                    <label for="form34">Price</label>
-                    <mdb-error *ngIf="ModalPrice.invalid && (ModalPrice.dirty || ModalPrice.touched)">
-                        Name Invalid
-                    </mdb-error>
-                </div>
-                <div class="md-form mb-5">
                     <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
                     <input type="email" id="form29" class="form-control" mdbInput mdbValidate
                         [formControl]="ModalQuantity" required>
                     <label for="form29">Quantity</label>
                     <mdb-error *ngIf="ModalQuantity.invalid && (ModalQuantity.dirty || ModalQuantity.touched)">
-                        Email invalid
+                        Quantity invalid
                     </mdb-error>
                 </div>
             </div>

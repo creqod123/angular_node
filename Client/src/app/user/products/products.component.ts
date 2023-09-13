@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 import { SocketService } from 'src/app/services/socket.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -22,11 +23,18 @@ export class ProductsComponent {
   }
 
   getHomeProduct() {
-    this.userData.homeProduct().subscribe((data: any) => {
-      this.allProduct = data;
-      this.allProduct = this.allProduct.data;
-      this.spinner.hide();
-    })
+    // this.userData.homeProduct().subscribe((data: any) => {
+    //   this.allProduct = data;
+    //   this.allProduct = this.allProduct.data;
+    //   this.spinner.hide();
+    // })
+    this.userData.homeProduct().pipe(
+      tap((data: any) => {
+        this.allProduct = data;
+        this.allProduct = this.allProduct.data;
+        this.spinner.hide();
+      })
+    ).subscribe();
   }
 
   addToCart(data: any) {

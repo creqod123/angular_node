@@ -8,7 +8,7 @@ const socket = require('../socket/index')
 
 exports.getAll = (async (req, res, next) => {
     try {
-        if (req.user.type === 'user') {
+        if (req.user.type != 'seller') {
             data = await adminProduct.find();
             socket.getAllProdcut('getAll', data);
             res.status(200).json({
@@ -193,7 +193,7 @@ exports.productUpdate = (async (req, res, next) => {
     try {
         const productId = req.body.id;
         const form = req.body.form;
-        await checkout.updateOne({ _id: productId }, { price: form.ModalPrice, quantity: form.ModalQuantity });
+        await checkout.updateOne({ _id: productId }, { quantity: form.ModalQuantity });
         res.status(200).json({
             success: true,
             message: "complete",

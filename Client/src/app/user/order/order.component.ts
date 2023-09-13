@@ -33,7 +33,6 @@ export class OrderComponent {
     // ==== product update
 
     this.validatingProduct = new FormGroup({
-      ModalPrice: new FormControl('', Validators.required),
       ModalQuantity: new FormControl('', Validators.required),
     });
     this.allOrderProduct();
@@ -100,12 +99,8 @@ export class OrderComponent {
     return this.validatingProduct.get('ModalQuantity');
   }
 
-  get ModalPrice() {
-    return this.validatingProduct.get('ModalPrice');
-  }
-
   productCheck() {
-    if (this.validatingProduct.value.ModalPrice >= 1 && this.validatingProduct.value.ModalQuantity >= 1) {
+    if (this.validatingProduct.value.ModalQuantity >= 1) {
       return false;
     }
     return true;
@@ -113,7 +108,6 @@ export class OrderComponent {
 
   oldProduct(item: any, data: any) {
     this.validatingProduct.patchValue({
-      ModalPrice: item.price,
       ModalQuantity: item.quantity,
     });
     this.modalSH = data;

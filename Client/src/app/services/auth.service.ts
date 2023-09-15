@@ -17,8 +17,8 @@ export class AuthService {
     this.types.next(data);
   }
 
-  // url = `${environment.apiUrl}:${environment.port}`;
-  url = `${environment.apiUrl}`;
+  url = `${environment.apiUrl}:${environment.port}`;
+  // url = `${environment.apiUrl}`;
 
 
   authLogin(data: any) {

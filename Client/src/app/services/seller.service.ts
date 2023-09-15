@@ -8,8 +8,8 @@ import { environment } from 'environment';
 })
 export class SellerService {
 
-  url = `${environment.apiUrl}:${environment.port}/seller`;
-  // url = `${environment.apiUrl}/seller`;
+  // url = `${environment.apiUrl}:${environment.port}/seller`;
+  url = `${environment.apiUrl}/seller`;
   userData: any;
 
   constructor(private http: HttpClient) {
@@ -20,6 +20,7 @@ export class SellerService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.get(`${this.url}`, httpOptions);
@@ -29,6 +30,7 @@ export class SellerService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.post(`${this.url}/update`, { id: id, form: data }, httpOptions);
@@ -38,6 +40,7 @@ export class SellerService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.post(`${this.url}/remove`, { id: id }, httpOptions);
@@ -47,6 +50,7 @@ export class SellerService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.post(`${this.url}/add`, form, httpOptions);
@@ -56,6 +60,7 @@ export class SellerService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.get(`${this.url}/detail`, httpOptions);
@@ -65,6 +70,7 @@ export class SellerService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.post(`${this.url}/delete?=${option}`, { id: id }, httpOptions);

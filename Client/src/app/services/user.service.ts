@@ -9,8 +9,8 @@ import { environment } from 'environment';
 export class UserService {
 
   userLoginCheck: any = false;
-  url = `${environment.apiUrl}:${environment.port}/user`;
-  // url = `${environment.apiUrl}/user`;
+  // url = `${environment.apiUrl}:${environment.port}/user`;
+  url = `${environment.apiUrl}/user`;
   userData: any;
 
   constructor(private http: HttpClient) {
@@ -21,6 +21,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.get(this.url, httpOptions);
@@ -30,6 +31,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.get(`${this.url}/cart`, httpOptions);
@@ -39,6 +41,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.post(`${this.url}/cartSaved`, data, httpOptions);
@@ -48,6 +51,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.delete(`${this.url}/cartRemove?id=${data}`, httpOptions);
@@ -57,6 +61,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.post(`${this.url}/checkout`, { product: data, address: address }, httpOptions);
@@ -66,6 +71,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.get(`${this.url}/order`, httpOptions);
@@ -75,6 +81,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.post(`${this.url}/addressUpdate`, data, httpOptions);
@@ -84,6 +91,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     data = { id: id, form: data };
@@ -94,6 +102,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         token: this.userData,
+        "ngrok-skip-browser-warning": "69420",
       })
     };
     return this.http.delete(`${this.url}/orderDelete?id=${data}`, httpOptions);
